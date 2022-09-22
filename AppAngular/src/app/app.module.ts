@@ -1,30 +1,20 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { VacinasService } from './vacinas.service';
-import { VacinasComponent } from './components/vacinas/vacinas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    VacinasComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ModalModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [HttpClientModule, VacinasService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
