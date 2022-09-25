@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDAPI.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220810171859_criacaoBD")]
+    [Migration("20220925222403_criacaoBD")]
     partial class criacaoBD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,7 @@ namespace CRUDAPI.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Dica")
+                    b.Property<string>("DicaDaVacina")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeDaVacina")

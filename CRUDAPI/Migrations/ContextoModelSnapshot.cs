@@ -25,7 +25,7 @@ namespace CRUDAPI.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Dica")
+                    b.Property<string>("DicaDaVacina")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeDaVacina")

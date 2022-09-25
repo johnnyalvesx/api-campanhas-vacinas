@@ -6,6 +6,6 @@ namespace CRUDAPI.Models
 
         public string NomeDaVacina { get; set; }
 
-        public string Dica { get; set; }
+        public string DicaDaVacina { get; set; }
     }
 }

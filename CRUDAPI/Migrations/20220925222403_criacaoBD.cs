@@ -13,7 +13,7 @@ namespace CRUDAPI.Migrations
                     VacinaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeDaVacina = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Dica = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    DicaDaVacina = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
