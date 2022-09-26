@@ -15,12 +15,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { VacinasService } from './vacinas.service';
 import { HomeComponent } from './views/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,9 @@ import { HeaderComponent } from './shared/header/header.component';
     FlexLayoutModule,
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [HttpClientModule, VacinasService],
   bootstrap: [AppComponent]

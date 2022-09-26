@@ -17,7 +17,6 @@ export class VacinasService {
 
   constructor(private http: HttpClient) { }
 
-
   PegarTodasAsVacinas(): Observable<Vacina[]> {
     return this.http.get<Vacina[]>(this.url);
   }
@@ -29,12 +28,10 @@ export class VacinasService {
 
   SalvarVacina(vacina: Vacina): Observable<any> {
     return this.http.post<Vacina>(this.url, vacina, httpOptions);
-
   }
 
   AtualizarVacina(vacina: Vacina): Observable<any> {
     return this.http.put<Vacina>(this.url, vacina, httpOptions);
-
   }
 
   ExcluirVacina(vacinaId: Vacina): Observable<any> {
