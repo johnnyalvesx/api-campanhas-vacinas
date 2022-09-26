@@ -49,18 +49,32 @@ export class HomeComponent implements OnInit {
         nomeDaVacina: '',
         dicaDaVacina: '',
         acoes: ''
-      } : element
+      } : {
+        vacinaId: element.vacinaId,
+        nomeDaVacina: element.nomeDaVacina,
+        dicaDaVacina: element.dicaDaVacina,
+        acoes: element.acoes
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.dataSource.push(result);
-        this.table.renderRows();
+        if (this.dataSource.map(p => p.vacinaId).includes(result.vacinaId)) {
+          this.dataSource[result.vacinaId - 1] = result;
+          this.table.renderRows();
+        } else {
+          this.dataSource.push(result);
+          this.table.renderRows();
+        }
       }
-
     });
   }
+
   deleteElement(vacinaId: number): void {
     this.dataSource = this.dataSource.filter(p => p.vacinaId !== vacinaId)
+  }
+
+  editElement(element: PeriodicElement): void {
+    this.openDialog(element);
   }
 }

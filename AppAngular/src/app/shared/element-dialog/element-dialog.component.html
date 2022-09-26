@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Create Element</h1>
+<h1 *ngIf="!isChange" mat-dialog-title>Cadastrar vacina</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Editar vacina</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Nome da Vacina</mat-label>
@@ -15,5 +16,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
+  <button *ngIf="!isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
+  <button *ngIf="isChange" mat-button [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
 </div>
