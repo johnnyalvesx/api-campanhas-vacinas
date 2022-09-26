@@ -17,6 +17,7 @@ body {
   margin-inline: auto;
   width: 65%;
   height: 100vh;
+  padding-bottom: 0;
   display: flexbox;
   -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -35,7 +36,7 @@ body {
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 40px;
-  padding-right: 40px;
+  padding-right: 0px;
   /* background styling */
   background-size: cover;
   background-position: center;
@@ -54,9 +55,23 @@ body {
 }
 
 mat-form-field {
-  width: 100%;
-
+  width: 90%;
+  padding-right: 0px;
+  padding-top: 0px;
+  margin-right: 10px;
 }
+
+.mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+
+.add-button {
+  margin-top: 10px;
+  color: #9E9E9E;
+  position: absolute;
+}
+
+.mat-icon {}
 
 // mat-icon-stepper selected color change
 ::ng-deep .mat-step-header .mat-step-icon-selected,
