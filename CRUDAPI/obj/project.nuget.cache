@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HsvmGrgu6XGAyR7h/kyhFZzMD9a5a9Y+LoFEZwETij0fj3FsrYOeZaJqyl+gTtpv8CTCzUOfmOnVhikVBZMPnA==",
+  "dgSpecHash": "mLad9Rex6LHr3aNeh0axeqix02xmzI4knkTlDL0lGFT2OTom9Ca8aq99GgkTS7sstGS5BHOrOq6sUp2vsh6EKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alves\\Documentos\\Projects\\CRUDAngularWebAPI\\api-campanhas-vacinas\\CRUDAPI\\CRUDAPI.csproj",
+  "projectFilePath": "C:\\Users\\alves\\Área de Trabalho\\api-campanhas-vacinas\\CRUDAPI\\CRUDAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alves\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alves\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
