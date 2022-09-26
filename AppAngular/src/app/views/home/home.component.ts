@@ -60,5 +60,7 @@ export class HomeComponent implements OnInit {
 
     });
   }
-
+  deleteElement(vacinaId: number): void {
+    this.dataSource = this.dataSource.filter(p => p.vacinaId !== vacinaId)
+  }
 }
