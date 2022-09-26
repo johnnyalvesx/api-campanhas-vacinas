@@ -16,13 +16,18 @@ import { VacinasService } from './vacinas.service';
 import { HomeComponent } from './views/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; 
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ElementDialogComponent } from './shared/element-dialog/element-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    ElementDialogComponent,
 
   ],
   imports: [
@@ -38,6 +43,9 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [HttpClientModule, VacinasService],
   bootstrap: [AppComponent]
