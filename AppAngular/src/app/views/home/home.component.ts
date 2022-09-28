@@ -1,5 +1,4 @@
 import { VacinasService } from './../../services/VacinasService';
-import { Vacina } from './../../Vacina';
 import { ElementDialogComponent } from './../../shared/element-dialog/element-dialog.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -30,6 +29,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.vacinasService.getElements()
       .subscribe((data: PeriodicElement[]) => {
+        console.log(data);
         this.dataSource = data;
       });
   }
@@ -58,20 +58,29 @@ export class HomeComponent implements OnInit {
       if (result !== undefined) {
         console.log(result);
         if (this.dataSource.map(p => p.vacinaId).includes(result.vacinaId)) {
-          this.dataSource[result.vacinaId - 1] = result;
-          this.table.renderRows();
+          this.vacinasService.editElement(result)
+            .subscribe((data: PeriodicElement) => {
+              const index = this.dataSource.findIndex(p => p.vacinaId === data.vacinaId)
+              this.dataSource[index] = data;
+              this.table.renderRows();
+
+            })
         } else {
           this.vacinasService.createElements(result)
             .subscribe((data: PeriodicElement) => {
-              this.dataSource.push(result);
+              this.dataSource.push(data);
               this.table.renderRows();
             });
-        };
+        }
       }
-    }
-    )
+    });
   }
+
   deleteElement(vacinaId: number): void {
+    this.vacinasService.deleteElement(vacinaId)
+      .subscribe(() => {
+        this.dataSource = this.dataSource.filter(p => p.vacinaId !== vacinaId);
+      });
     this.dataSource = this.dataSource.filter(p => p.vacinaId !== vacinaId);
   }
 
@@ -79,4 +88,3 @@ export class HomeComponent implements OnInit {
     this.openDialog(element);
   }
 }
-

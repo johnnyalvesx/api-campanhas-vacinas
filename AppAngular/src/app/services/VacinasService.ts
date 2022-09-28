@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class VacinasService {
-  elementApiUrl = 'http://localhost:4200/';
+  elementApiUrl = 'http://localhost:4200/api/vacinas';
   constructor(private http: HttpClient) { }
 
   getElements(): Observable<PeriodicElement[]> {
     return this.http.get<PeriodicElement[]>(this.elementApiUrl)
   }
 
-  createElements(element: PeriodicElement): Observable<PeriodicElement> {
-    return this.http.post<PeriodicElement>(this.elementApiUrl, element);
+  createElements(vacina: PeriodicElement): Observable<PeriodicElement> {
+    return this.http.post<PeriodicElement>(this.elementApiUrl, vacina);
   }
 
   editElement(element: PeriodicElement): Observable<PeriodicElement> {
@@ -21,6 +21,6 @@ export class VacinasService {
   }
 
   deleteElement(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.elementApiUrl}?id=${id}`);
+    return this.http.delete<any>(`${this.elementApiUrl}/${id}`);
   }
 }

@@ -28,30 +28,30 @@
           <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
-          <!-- Position Column -->
+          <!-- Id Column -->
           <ng-container matColumnDef="vacinaId">
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element"> {{element.vacinaId}} </td>
           </ng-container>
 
-          <!-- Name Column -->
+          <!-- Nome da vacina Column -->
           <ng-container matColumnDef="nomeDaVacina">
             <th mat-header-cell *matHeaderCellDef> Nome da Vacina </th>
             <td mat-cell *matCellDef="let element"> {{element.nomeDaVacina}} </td>
           </ng-container>
 
-          <!-- Weight Column -->
+          <!-- Dica da Vacina  -->
           <ng-container matColumnDef="dicaDaVacina">
             <th mat-header-cell *matHeaderCellDef> Dica </th>
             <td mat-cell *matCellDef="let element"> {{element.dicaDaVacina}} </td>
           </ng-container>
 
-          <!-- Symbol Column -->
+          <!-- Ações Column -->
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let element">
               <button mat-icon-button>
-                <mat-icon mat-icon-button (click)="element">edit</mat-icon>
+                <mat-icon mat-icon-button (click)="editElement(element.PeriodicElement)">edit</mat-icon>
               </button>
               <button mat-icon-button (click)="deleteElement(element.vacinaId)">
                 <mat-icon>delete</mat-icon>

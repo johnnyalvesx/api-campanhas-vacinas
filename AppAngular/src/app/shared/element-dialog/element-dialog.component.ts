@@ -29,5 +29,4 @@ export class ElementDialogComponent implements OnInit {
   onCancel(): void {
     this.dialogRef.close();
   }
-
 }
