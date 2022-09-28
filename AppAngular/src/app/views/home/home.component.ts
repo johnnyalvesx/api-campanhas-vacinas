@@ -14,7 +14,7 @@ import { PeriodicElement } from 'src/app/models/PeriodicElement';
 export class HomeComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
-  displayedColumns: string[] = ['vacinaId', 'position', 'nomeDaVacina', 'dicaDaVacina', 'acoes'];
+  displayedColumns: string[] = ['vacinaId', 'nomeDaVacina', 'dicaDaVacina', 'acoes'];
   dataSource!: PeriodicElement[];
 
   constructor(
@@ -49,26 +49,6 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result !== undefined) {
-    //     console.log(result);
-    //     if (this.dataSource.map(p => p.vacinaId).includes(result.vacinaId)) {
-    //       this.vacinasService.editElement(result)
-    //         .subscribe((data: PeriodicElement) => {
-    //           const index = this.dataSource.findIndex(p => p.vacinaId === data.vacinaId)
-    //           this.dataSource[index] = data;
-    //           this.table.renderRows();
-    //         })
-    //     } else {
-    //       this.vacinasService.createElements(result)
-    //         .subscribe((data: PeriodicElement) => {
-    //           this.dataSource.push(data);
-    //           this.table.renderRows();
-    //         });
-    //     }
-    //   }
-    // });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         console.log(result);
@@ -100,5 +80,5 @@ export class HomeComponent implements OnInit {
         this.dataSource = this.dataSource.filter(p => p.vacinaId !== position);
       });
 
-  }
+  };
 }

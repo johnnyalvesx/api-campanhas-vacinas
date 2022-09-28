@@ -1,0 +1,9 @@
+{
+  "posts": [
+    {
+      "vacinaId": 1,
+      "nomeDaVacina": "json-server",
+      "dicaDaVacina": "typicode"
+    }
+  ]
+}

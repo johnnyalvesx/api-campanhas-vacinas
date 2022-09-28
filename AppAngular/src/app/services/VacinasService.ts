@@ -7,6 +7,8 @@ import { PeriodicElement } from '../models/PeriodicElement';
 @Injectable()
 export class VacinasService {
   elementApiUrl = 'https://localhost:5001/api/vacinas';
+  // elementApiUrl = 'http://localhost:3000/api/vacinas';
+
   constructor(private http: HttpClient) { }
 
   getElements(): Observable<PeriodicElement[]> {
