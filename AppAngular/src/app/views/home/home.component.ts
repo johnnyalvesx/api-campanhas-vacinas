@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
               const index = this.dataSource.findIndex(p => p.vacinaId === data.vacinaId)
               this.dataSource[index] = data;
               this.table.renderRows();
-
             })
         } else {
           this.vacinasService.createElements(result)
