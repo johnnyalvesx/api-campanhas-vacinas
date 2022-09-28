@@ -29,6 +29,11 @@
               The actual rendered columns are set as a property on the row definition" -->
 
           <!-- Id Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> Posição </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
           <ng-container matColumnDef="vacinaId">
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element"> {{element.vacinaId}} </td>
@@ -51,7 +56,7 @@
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let element">
               <button mat-icon-button>
-                <mat-icon mat-icon-button (click)="editElement(element.PeriodicElement)">edit</mat-icon>
+                <mat-icon mat-icon-button (click)="editElement(element)">edit</mat-icon>
               </button>
               <button mat-icon-button (click)="deleteElement(element.vacinaId)">
                 <mat-icon>delete</mat-icon>
