@@ -6,10 +6,11 @@ namespace CRUDAPI.Models
     {
         public DbSet<Vacina> Vacinas { get; set; }
 
+        public DbSet<Campanha> Campanhas { get; set; }
+
         public Contexto(DbContextOptions<Contexto> opcoes) : base(opcoes)
         {
             
         }
-
     }
 }
