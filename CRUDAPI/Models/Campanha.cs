@@ -21,7 +21,11 @@ namespace CRUDAPI.Models
         [Display(Name = "Data de início")]
         public DateTime DataDeInicio { get; set; }
 
+
         [Column("data_de_termino")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data de término")]
         public DateTime DataDeTermino { get; set; }
 
         [Column("status_da_campanha")]
