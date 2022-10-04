@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 1433,
+            "driver": "MSSQL",
+            "connectString": "\"Server=(localdb)\\\\mssqllocaldb;Database=AngWebAPIBD;\"",
+            "name": "SQL Server Local",
+            "database": "criacaoBD",
+            "username": "sa",
+            "password": ""
+        }
+    ]
+}

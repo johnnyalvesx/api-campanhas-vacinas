@@ -7,11 +7,11 @@ namespace CRUDAPI.Models
     [Table("tb_campanhas")]
     public class Campanha
     {
-        
-        [Column("pk_campanha_id")]
+
+        [Column("campanha_id")]
         public int CampanhaId { get; set; }
 
-        [MaxLength(25)]
+        [MaxLength(25, ErrorMessage = "Máximo de 25 caracteres.")]
         [Column("nome_da_campanha")]
         public string NomeDaCampanha { get; set; }
 
@@ -20,7 +20,6 @@ namespace CRUDAPI.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data de início")]
         public DateTime DataDeInicio { get; set; }
-
 
         [Column("data_de_termino")]
         [DataType(DataType.Date)]
@@ -33,10 +32,6 @@ namespace CRUDAPI.Models
 
         // Propriedades de navegação
 
-        [Column("fk_vacina_id")]
-        public int? VacinaId { get; set; }
-
         public Vacina Vacinas { get; set; }
-
     }
 }

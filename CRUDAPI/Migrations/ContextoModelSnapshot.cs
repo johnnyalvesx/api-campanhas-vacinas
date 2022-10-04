@@ -24,7 +24,7 @@ namespace CRUDAPI.Migrations
                     b.Property<int>("CampanhaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("pk_campanha_id")
+                        .HasColumnName("campanha_id")
                         .UseIdentityColumn();
 
                     b.Property<DateTime>("DataDeInicio")
@@ -44,13 +44,7 @@ namespace CRUDAPI.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("status_da_campanha");
 
-                    b.Property<int?>("VacinaId")
-                        .HasColumnType("int")
-                        .HasColumnName("fk_vacina_id");
-
                     b.HasKey("CampanhaId");
-
-                    b.HasIndex("VacinaId");
 
                     b.ToTable("tb_campanhas");
                 });
@@ -60,11 +54,15 @@ namespace CRUDAPI.Migrations
                     b.Property<int>("VacinaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("pk_vacina_id")
+                        .HasColumnName("vacina_id")
                         .UseIdentityColumn();
 
+                    b.Property<int>("CampanhaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("DicaDaVacina")
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
                         .HasColumnName("dica_da_vacina");
 
                     b.Property<string>("NomeDaVacina")
@@ -73,21 +71,26 @@ namespace CRUDAPI.Migrations
 
                     b.HasKey("VacinaId");
 
+                    b.HasIndex("CampanhaId")
+                        .IsUnique();
+
                     b.ToTable("tb_vacinas");
-                });
-
-            modelBuilder.Entity("CRUDAPI.Models.Campanha", b =>
-                {
-                    b.HasOne("CRUDAPI.Models.Vacina", "Vacinas")
-                        .WithMany("Campanhas")
-                        .HasForeignKey("VacinaId");
-
-                    b.Navigation("Vacinas");
                 });
 
             modelBuilder.Entity("CRUDAPI.Models.Vacina", b =>
                 {
+                    b.HasOne("CRUDAPI.Models.Campanha", "Campanhas")
+                        .WithOne("Vacinas")
+                        .HasForeignKey("CRUDAPI.Models.Vacina", "CampanhaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Campanhas");
+                });
+
+            modelBuilder.Entity("CRUDAPI.Models.Campanha", b =>
+                {
+                    b.Navigation("Vacinas");
                 });
 #pragma warning restore 612, 618
         }
