@@ -9,6 +9,7 @@
 
         public string? DicaDaVacina { get; set; }
 
-        public Campanha? Campanha { get; set; }
+        public List<Campanha>? Campanhas { get; set; }
+
     }
 }

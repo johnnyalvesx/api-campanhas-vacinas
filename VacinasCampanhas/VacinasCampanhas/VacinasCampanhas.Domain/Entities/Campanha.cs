@@ -17,8 +17,5 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
 
         public string? StatusDaCampanha { get; set; }
 
-        public int? VacinaId { get; set; }
-
-        public List<Vacina>? Vacinas { get; set; }
     }
 }
