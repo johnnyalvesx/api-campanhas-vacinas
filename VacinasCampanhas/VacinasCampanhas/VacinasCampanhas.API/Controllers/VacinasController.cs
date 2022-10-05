@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using CRUDAPI.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
+using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
-namespace CRUDAPI.Controllers
+namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
