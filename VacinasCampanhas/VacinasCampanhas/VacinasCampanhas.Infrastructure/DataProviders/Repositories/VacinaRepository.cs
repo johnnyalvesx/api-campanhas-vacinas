@@ -9,9 +9,9 @@ namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Reposit
     {
         private readonly Contexto contexto;
 
-        public VacinaRepository(Contexto _contexto)
+        public VacinaRepository(Contexto contexto)
         {
-            _contexto = contexto;
+            this.contexto = contexto;
         }
 
         public async Task<IEnumerable<Vacina>> PegarVacinasAsync()

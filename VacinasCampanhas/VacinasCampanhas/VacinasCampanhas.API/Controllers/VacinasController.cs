@@ -24,51 +24,46 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         //}
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vacina>>> PegarVacinasAsync()
+        public async Task<IActionResult> PegarVacinasAsync()
         {
             return Ok(await vacinaManager.PegarVacinasAsync());
         }
 
-        [HttpGet("{vacinaId}")]
-        public async Task<ActionResult<Vacina>> PegarVacinaPorIdAsync(int vacinaId)
+        [HttpGet("{id}")]
+        public async Task<ActionResult> PegarVacinaPorIdAsync(int id)
         {
-            Vacina vacina = await _contexto.Vacinas.FindAsync(vacinaId);
-
-            if (vacina == null)
-                return NotFound();
-
-            return vacina;
+            return Ok(await vacinaManager.PegarVacinaPorIdAsync(id));
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Vacina>> SalvarVacinaAsync(Vacina vacina)
-        {
-            await _contexto.Vacinas.AddAsync(vacina);
-            await _contexto.SaveChangesAsync();
+        //[HttpPost]
+        //public async Task<ActionResult<Vacina>> SalvarVacinaAsync(Vacina vacina)
+        //{
+        //    await _contexto.Vacinas.AddAsync(vacina);
+        //    await _contexto.SaveChangesAsync();
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
-        [HttpPut]
-        public async Task<ActionResult> AtualizarVacinaAsync(Vacina vacina)
-        {
-            _contexto.Vacinas.Update(vacina);
-            await _contexto.SaveChangesAsync();
+        //[HttpPut]
+        //public async Task<ActionResult> AtualizarVacinaAsync(Vacina vacina)
+        //{
+        //    _contexto.Vacinas.Update(vacina);
+        //    await _contexto.SaveChangesAsync();
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
-        [HttpDelete("{vacinaId}")]
-        public async Task<ActionResult> ExcluirVacinaAsync(int vacinaId)
-        {
-            Vacina vacina = await _contexto.Vacinas.FindAsync(vacinaId);
-            if (vacina == null)
-                return NotFound();
+        //[HttpDelete("{vacinaId}")]
+        //public async Task<ActionResult> ExcluirVacinaAsync(int vacinaId)
+        //{
+        //    Vacina vacina = await _contexto.Vacinas.FindAsync(vacinaId);
+        //    if (vacina == null)
+        //        return NotFound();
 
-            _contexto.Remove(vacina);
-            await _contexto.SaveChangesAsync();
+        //    _contexto.Remove(vacina);
+        //    await _contexto.SaveChangesAsync();
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
     }
 }
