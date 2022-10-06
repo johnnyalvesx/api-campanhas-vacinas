@@ -23,5 +23,13 @@ namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Reposit
         {
             return await contexto.Vacinas.FindAsync(id);
         }
+
+        public async Task<Vacina> CadastrarVacinaAsync(Vacina vacina)
+        {
+            await contexto.Vacinas.AddAsync(vacina);
+            await contexto.SaveChangesAsync();
+            return vacina;
+        }
+
     }
 }
