@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="VacinasCampanhas.Application\Models\" />
     <Folder Include="VacinasCampanhas.Application\UseCases\Abstractions\" />
-    <Folder Include="VacinasCampanhas.Infrastructure\DataProviders\Repositories\" />
   </ItemGroup>
 
 </Project>

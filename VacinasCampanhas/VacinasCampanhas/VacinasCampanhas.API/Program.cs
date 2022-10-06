@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
+using VacinasCampanhas.VacinasCampanhas.Domain.Implementations;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
+using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,9 @@ builder.Services.AddDbContext<Contexto>(opcoes =>
 {
     opcoes.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vacinascampanhasDB;");
 });
+
+builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
+builder.Services.AddScoped<IVacinaManager, VacinaManager>();
 
 var app = builder.Build();
 

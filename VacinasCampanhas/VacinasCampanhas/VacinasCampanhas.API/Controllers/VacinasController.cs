@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
@@ -9,21 +10,27 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
     [Route("api/[controller]")]
     public class VacinasController : ControllerBase
     {
-        private readonly Contexto _contexto;
+        //private readonly Contexto _contexto;
+        private readonly IVacinaManager vacinaManager;
 
-        public VacinasController(Contexto contexto)
+        public VacinasController(IVacinaManager vacinaManager)
         {
-            _contexto = contexto;
+            this.vacinaManager = vacinaManager;
         }
 
+        //public VacinasController(Contexto contexto)
+        //{
+        //    _contexto = contexto;
+        //}
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vacina>>> PegarTodasAsVacinasAsync()
+        public async Task<ActionResult<IEnumerable<Vacina>>> PegarVacinasAsync()
         {
-            return await _contexto.Vacinas.ToListAsync();
+            return Ok(await vacinaManager.PegarVacinasAsync());
         }
 
         [HttpGet("{vacinaId}")]
-        public async Task<ActionResult<Vacina>> PegarVacinaPeloIdAsync(int vacinaId)
+        public async Task<ActionResult<Vacina>> PegarVacinaPorIdAsync(int vacinaId)
         {
             Vacina vacina = await _contexto.Vacinas.FindAsync(vacinaId);
 

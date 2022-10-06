@@ -2,7 +2,7 @@
 
 namespace VacinasCampanhas.VacinasCampanhas.Domain.Abstractions
 {
-    public interface IVacinaRepository
+    public interface IVacinaManager
     {
         Task<IEnumerable<Vacina>> PegarVacinasAsync();
         Task<Vacina> PegarVacinaPorIdAsync(int id);

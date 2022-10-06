@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
 namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Repositories
 {
-    public class VacinaRepository
+    public class VacinaRepository : IVacinaRepository
     {
         private readonly Contexto contexto;
 
