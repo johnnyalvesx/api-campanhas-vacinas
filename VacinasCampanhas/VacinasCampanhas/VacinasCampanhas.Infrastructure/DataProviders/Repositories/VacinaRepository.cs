@@ -53,6 +53,5 @@ namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Reposit
             contexto.Vacinas.Remove(vacinaConsultada);
             await contexto.SaveChangesAsync();
         }
-
     }
 }

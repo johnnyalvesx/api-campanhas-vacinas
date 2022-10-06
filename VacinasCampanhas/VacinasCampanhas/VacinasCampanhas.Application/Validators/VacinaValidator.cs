@@ -7,8 +7,9 @@ namespace VacinasCampanhas.VacinasCampanhas.Application.Validators
     {
         public VacinaValidator()
         {
-            RuleFor(x => x.NomeDaVacina).NotNull().MaximumLength(25);
+            RuleFor(x => x.NomeDaVacina).NotNull().NotEmpty().MaximumLength(25);
             RuleFor(x => x.DicaDaVacina).MaximumLength(255);
         }
+
     }
 }
