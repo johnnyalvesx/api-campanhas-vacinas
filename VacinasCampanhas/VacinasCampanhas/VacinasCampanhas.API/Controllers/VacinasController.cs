@@ -37,6 +37,20 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             return CreatedAtAction(nameof(PegarVacinaPorIdAsync), new { id = vacina.VacinaId }, vacina);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> AtualizarVacinaAsync(Vacina vacina)
+        {
+            var vacinaAtualizada = await vacinaManager.AtualizarVacinaAsync(vacina);
+            if  (vacinaAtualizada == null)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+
+
+
+
         //[HttpPut]
         //public async Task<ActionResult> AtualizarVacinaAsync(Vacina vacina)
         //{
