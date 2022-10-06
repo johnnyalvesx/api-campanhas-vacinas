@@ -49,28 +49,11 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         }
 
 
+        public async Task<ActionResult> DeletarVacinaAsync(int id)
+        {
+            await vacinaManager.DeletarVacinaAsync(id);
+            return NoContent();
+        }
 
-
-        //[HttpPut]
-        //public async Task<ActionResult> AtualizarVacinaAsync(Vacina vacina)
-        //{
-        //    _contexto.Vacinas.Update(vacina);
-        //    await _contexto.SaveChangesAsync();
-
-        //    return Ok();
-        //}
-
-        //[HttpDelete("{vacinaId}")]
-        //public async Task<ActionResult> ExcluirVacinaAsync(int vacinaId)
-        //{
-        //    Vacina vacina = await _contexto.Vacinas.FindAsync(vacinaId);
-        //    if (vacina == null)
-        //        return NotFound();
-
-        //    _contexto.Remove(vacina);
-        //    await _contexto.SaveChangesAsync();
-
-        //    return Ok();
-        //}
     }
 }
