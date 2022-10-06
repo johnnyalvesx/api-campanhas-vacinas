@@ -6,11 +6,10 @@ using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
 namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class VacinasController : ControllerBase
     {
-        //private readonly Contexto _contexto;
         private readonly IVacinaManager vacinaManager;
 
         public VacinasController(IVacinaManager vacinaManager)
@@ -24,17 +23,17 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             return Ok(await vacinaManager.PegarVacinasAsync());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}") ]
         public async Task<IActionResult> PegarVacinaPorIdAsync(int id)
         {
             return Ok(await vacinaManager.PegarVacinaPorIdAsync(id));
         }
 
         [HttpPost]
-        public async Task<IActionResult> CadastrarVacinaAsync(Vacina vacina)
+        public async Task<IActionResult> Post(Vacina vacina)
         {
             var vacinaInserida = await vacinaManager.CadastrarVacinaAsync(vacina);
-            return CreatedAtAction(nameof(PegarVacinaPorIdAsync), new { id = vacina.VacinaId }, vacina);
+            return CreatedAtAction(nameof(PegarVacinaPorIdAsync), new { id = vacina.Id }, vacina);
         }
 
         [HttpPut]
@@ -45,15 +44,14 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             {
                 return NotFound();
             }
-            return Ok();
+            return Ok(vacinaAtualizada);
         }
 
-
-        public async Task<ActionResult> DeletarVacinaAsync(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarVacinaAsync(int id)
         {
             await vacinaManager.DeletarVacinaAsync(id);
             return NoContent();
         }
-
     }
 }
