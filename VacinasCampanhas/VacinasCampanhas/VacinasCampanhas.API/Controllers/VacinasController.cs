@@ -18,11 +18,6 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             this.vacinaManager = vacinaManager;
         }
 
-        //public VacinasController(Contexto contexto)
-        //{
-        //    _contexto = contexto;
-        //}
-
         [HttpGet]
         public async Task<IActionResult> PegarVacinasAsync()
         {
@@ -30,19 +25,17 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> PegarVacinaPorIdAsync(int id)
+        public async Task<IActionResult> PegarVacinaPorIdAsync(int id)
         {
             return Ok(await vacinaManager.PegarVacinaPorIdAsync(id));
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult<Vacina>> SalvarVacinaAsync(Vacina vacina)
-        //{
-        //    await _contexto.Vacinas.AddAsync(vacina);
-        //    await _contexto.SaveChangesAsync();
-
-        //    return Ok();
-        //}
+        [HttpPost]
+        public async Task<IActionResult> CadastrarVacinaAsync(Vacina vacina)
+        {
+            var vacinaInserida = await vacinaManager.CadastrarVacinaAsync(vacina);
+            return CreatedAtAction(nameof(PegarVacinaPorIdAsync), new { id = vacina.VacinaId }, vacina);
+        }
 
         //[HttpPut]
         //public async Task<ActionResult> AtualizarVacinaAsync(Vacina vacina)
