@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VacinasCampanhas.Migrations
 {
-    public partial class vacinascampanhasDB : Migration
+    public partial class vacinasDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,14 +29,14 @@ namespace VacinasCampanhas.Migrations
                 name: "Vacinas",
                 columns: table => new
                 {
-                    VacinaId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeDaVacina = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DicaDaVacina = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vacinas", x => x.VacinaId);
+                    table.PrimaryKey("PK_Vacinas", x => x.Id);
                 });
         }
 

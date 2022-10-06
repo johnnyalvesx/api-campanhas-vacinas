@@ -1,5 +1,8 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using VacinasCampanhas.VacinasCampanhas.Application.Validators;
 using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Implementations;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
@@ -9,10 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.SuppressAsyncSuffixInActionNames = false;
+})
+    .AddFluentValidation(p => p.RegisterValidatorsFromAssemblyContaining<VacinaValidator>());
 
 builder.Services.AddEndpointsApiExplorer();
-
 
 builder.Services.AddDbContext<Contexto>(opcoes =>
 {

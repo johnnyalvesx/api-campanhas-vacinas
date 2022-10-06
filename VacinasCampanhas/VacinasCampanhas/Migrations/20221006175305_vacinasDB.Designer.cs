@@ -12,8 +12,8 @@ using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 namespace VacinasCampanhas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20221006002607_vacinascampanhasDB")]
-    partial class vacinascampanhasDB
+    [Migration("20221006175305_vacinasDB")]
+    partial class vacinasDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,11 +51,11 @@ namespace VacinasCampanhas.Migrations
 
             modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", b =>
                 {
-                    b.Property<int>("VacinaId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VacinaId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("DicaDaVacina")
                         .HasColumnType("nvarchar(max)");
@@ -63,7 +63,7 @@ namespace VacinasCampanhas.Migrations
                     b.Property<string>("NomeDaVacina")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("VacinaId");
+                    b.HasKey("Id");
 
                     b.ToTable("Vacinas");
                 });
