@@ -22,5 +22,19 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Implementations
             return await vacinaRepository.PegarVacinaPorIdAsync(id);
         }
 
+        public async Task<Vacina> CadastrarVacinaAsync(Vacina vacina)
+        {
+            return await vacinaRepository.CadastrarVacinaAsync(vacina);
+        }
+
+        public async Task<Vacina> AtualizarVacinaAsync(Vacina vacina)
+        {
+            return await vacinaRepository.AtualizarVacinaAsync(vacina);
+        }
+
+        public async Task DeletarVacinaAsync(int id)
+        {
+            await vacinaRepository.DeletarVacinaAsync(id);
+        }
     }
 }
