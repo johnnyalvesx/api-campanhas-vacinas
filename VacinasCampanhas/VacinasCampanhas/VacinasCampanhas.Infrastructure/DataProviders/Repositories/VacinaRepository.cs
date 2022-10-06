@@ -50,5 +50,12 @@ namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Reposit
 
         }
 
+        public async Task DeletarVacinaAsync(int id)
+        {
+            var vacinaConsultada = await contexto.Vacinas.FindAsync(id);
+            contexto.Vacinas.Remove(vacinaConsultada);
+            await contexto.SaveChangesAsync();
+        }
+
     }
 }
