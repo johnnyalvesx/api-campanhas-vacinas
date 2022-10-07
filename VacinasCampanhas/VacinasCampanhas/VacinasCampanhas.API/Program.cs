@@ -14,7 +14,9 @@ builder.Services.AddControllers(options =>
     options.SuppressAsyncSuffixInActionNames = false;
 });
 
+#pragma warning disable CS0612 // Type or member is obsolete
 builder.Services.AddFluentValidationConfiguration();
+#pragma warning restore CS0612 // Type or member is obsolete
 
 builder.Services.AddEndpointsApiExplorer();
 

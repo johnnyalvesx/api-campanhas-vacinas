@@ -5,11 +5,12 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Configurations
 {
     public static class FluentValidationConfig
     {
+        [Obsolete]
         public static void AddFluentValidationConfiguration(this IServiceCollection services)
         {
             services.AddControllers()
                .AddFluentValidation(p =>
-                p.RegisterValidatorsFromAssemblyContaining<VacinaValidator>());
+               p.RegisterValidatorsFromAssemblyContaining<VacinaValidator>());
         }
     }
 }

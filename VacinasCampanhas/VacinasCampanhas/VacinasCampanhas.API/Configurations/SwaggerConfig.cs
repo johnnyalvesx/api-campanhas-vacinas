@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace VacinasCampanhas.VacinasCampanhas.API.Configurations
 {
@@ -9,6 +10,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Configurations
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vacinas e Campanhas", Version = "v1" });
+                c.AddFluentValidationRulesScoped();
             });
         }
 
