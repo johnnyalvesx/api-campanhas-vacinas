@@ -3,6 +3,7 @@ using VacinasCampanhas.VacinasCampanhas.API.Configurations;
 using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Implementations;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
+using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Implementations;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,11 @@ builder.Services.AddDbContext<Contexto>(opcoes =>
 
 builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
 builder.Services.AddScoped<IVacinaManager, VacinaManager>();
+
+builder.Services.AddScoped<ICampanhaRepository, CampanhaRepository>();
+builder.Services.AddScoped<ICampanhaManager, CampanhaManager>();
+
+
 
 builder.Services.AddSwaggerConfiguration();
 
