@@ -24,15 +24,10 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             return Ok(await campanhaManager.PegarCampanhasAsync());
         }
 
-        [HttpGet("{campanhaId}")]
-        public async Task<ActionResult<Campanha>> PegarCampanhaPeloIdAsync(int campanhaId)
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> PegarCampanhaPeloIdAsync(int id)
         {
-            Campanha campanha = await _contexto.Campanhas.FindAsync(campanhaId);
-
-            if (campanha == null)
-                return NotFound();
-
-            return campanha;
+            return Ok(await campanhaManager.PegarCampanhaPorIdAsync(id));
         }
 
         [HttpPost]
