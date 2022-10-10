@@ -26,6 +26,8 @@ builder.Services.AddDbContext<Contexto>(opcoes =>
     opcoes.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vacinascampanhasDB;");
 });
 
+builder.Services.AddCors();
+
 builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
 builder.Services.AddScoped<IVacinaManager, VacinaManager>();
 
@@ -39,6 +41,8 @@ builder.Services.AddSwaggerConfiguration();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 if (app.Environment.IsDevelopment())
 {
