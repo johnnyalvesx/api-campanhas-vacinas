@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
-using VacinasCampanhas.VacinasCampanhas.Domain.Implementations;
-using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
 namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
 {
@@ -13,7 +10,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
     {
         private readonly ICampanhaManager campanhaManager;
 
-        public CampanhasController(IVacinaManager vacinaManager)
+        public CampanhasController(ICampanhaManager campanhaManager)
         {
             this.campanhaManager = campanhaManager;
         }
@@ -24,7 +21,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             return Ok(await campanhaManager.PegarCampanhasAsync());
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> PegarCampanhaPeloIdAsync(int id)
         {
             return Ok(await campanhaManager.PegarCampanhaPorIdAsync(id));
@@ -48,17 +45,11 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
             return Ok(campanhaAtualizada);
         }
 
-        [HttpDelete("{campanhaId}")]
-        public async Task<ActionResult> ExcluirCampanhaAsync(int campanhaId)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeletarCampanhaAsync(int id)
         {
-            Campanha campanha = await _contexto.Campanhas.FindAsync(campanhaId);
-            if (campanha == null)
-                return NotFound();
-
-            _contexto.Remove(campanha);
-            await _contexto.SaveChangesAsync();
-
-            return Ok();
+            await campanhaManager.DeletarCampanhaAsync(id);
+            return NoContent();
         }
     }
 }

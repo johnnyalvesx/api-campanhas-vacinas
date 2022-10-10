@@ -6,9 +6,9 @@ namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Impleme
 {
     public class CampanhaManager : ICampanhaManager
     {
-        private readonly ICampanhaManager campanhaRepository;
+        private readonly ICampanhaRepository campanhaRepository;
 
-        public CampanhaManager(ICampanhaManager campanhaRepository)
+        public CampanhaManager(ICampanhaRepository campanhaRepository)
         {
             this.campanhaRepository = campanhaRepository;
         }
