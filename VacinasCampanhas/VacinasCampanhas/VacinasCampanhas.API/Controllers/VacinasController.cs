@@ -6,8 +6,8 @@ using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
 namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class VacinasController : ControllerBase
     {
         private readonly IVacinaManager vacinaManager;
