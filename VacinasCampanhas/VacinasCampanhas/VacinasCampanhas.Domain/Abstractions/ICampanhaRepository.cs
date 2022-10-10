@@ -4,13 +4,13 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Abstractions
 {
     public interface ICampanhaRepository
     {
-        Task<IEnumerable<Vacina>> PegarCampanhasAsync();
+        Task<IEnumerable<Campanha>> PegarCampanhasAsync();
 
-        Task<Vacina> PegarCampanhaPorIdAsync(int id);
+        Task<Campanha> PegarCampanhaPorIdAsync(int id);
 
-        Task<Vacina> CadastrarCampanhaAsync(Vacina vacina);
+        Task<Campanha> CadastrarCampanhaAsync(Campanha campanha);
 
-        Task<Vacina> AtualizarCampanhaAsync(Vacina vacina);
+        Task<Campanha> AtualizarCampanhaAsync(Campanha campanha);
 
         Task DeletarCampanhaAsync(int id);
     }
