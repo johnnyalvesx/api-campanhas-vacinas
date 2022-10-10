@@ -2,7 +2,7 @@
 
 namespace VacinasCampanhas.VacinasCampanhas.Domain.Abstractions
 {
-    public interface ICampanhaRepository
+    public interface ICampanhaManager
     {
         Task<IEnumerable<Campanha>> PegarCampanhasAsync();
 
@@ -15,3 +15,4 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Abstractions
         Task DeletarCampanhaAsync(int id);
     }
 }
+
