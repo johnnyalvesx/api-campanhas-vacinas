@@ -38,12 +38,14 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> AtualizarCampanhaAsync(Campanha campanha)
+        public async Task<IActionResult> AtualizarCampanhaAsync(Campanha campanha)
         {
-            _contexto.Campanhas.Update(campanha);
-            await _contexto.SaveChangesAsync();
-
-            return Ok();
+            var campanhaAtualizada = await campanhaManager.AtualizarCampanhaAsync(campanha);
+            if (campanhaAtualizada == null)
+            {
+                return NotFound();
+            }
+            return Ok(campanhaAtualizada);
         }
 
         [HttpDelete("{campanhaId}")]
