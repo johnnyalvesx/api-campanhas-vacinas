@@ -7,6 +7,7 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Implementations
     {
 
         private readonly IVacinaRepository vacinaRepository;
+
         public VacinaManager(IVacinaRepository vacinaRepository)
         {
             this.vacinaRepository = vacinaRepository;
