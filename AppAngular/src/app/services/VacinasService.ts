@@ -10,19 +10,19 @@ export class VacinasService {
 
   constructor(private http: HttpClient) { }
 
-  getElements(): Observable<Vacina[]> {
+  get(): Observable<Vacina[]> {
     return this.http.get<Vacina[]>(this.vacinasUrl)
   }
 
-  createElements(element: Vacina): Observable<Vacina> {
-    return this.http.post<Vacina>(this.vacinasUrl, element);
+  create(vacina: Vacina): Observable<Vacina> {
+    return this.http.post<Vacina>(this.vacinasUrl, vacina);
   }
 
-  editElement(element: Vacina): Observable<Vacina> {
-    return this.http.put<Vacina>(this.vacinasUrl, element);
+  edit(vacina: Vacina): Observable<Vacina> {
+    return this.http.put<Vacina>(this.vacinasUrl, vacina);
   }
 
-  deleteElement(id: number): Observable<any> {
+  delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.vacinasUrl}/${id}`);
   }
 }

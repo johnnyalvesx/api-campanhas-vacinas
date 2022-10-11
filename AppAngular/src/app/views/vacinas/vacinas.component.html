@@ -3,10 +3,25 @@
   <div class="wrapper">
     <div class="slide">
       <h1 class="titulo-font">Cadastrar Vacina</h1>
-      <section class="form-field">
+
+      <section class="form-field" [formGroup]="form">
         <mat-form-field appearance="outline">
-          <mat-label>Nome da vacina*</mat-label>
-          <input matInput placeholder="Nome da vacina - Mês/Ano">
+          <mat-label>Nome da vacina</mat-label>
+          <input matInput formControlName="nomeDaVacina" placeholder="Nome da vacina - Mês/Ano"
+            [ngClass]="{'is-invalid': submitted && hasError('nomeDaVacina')}">
+
+          <div class="invalid-feedback" *ngIf="hasError('nomeDaVacina')">
+
+            <div *ngIf="form.controls['nomeDaVacina'].errors?.['required']">
+              Por favor informe um nome para a vacina.
+            </div>
+            <div *ngIf="form.controls['nomeDaVacina'].errors?.['maxlength']">
+              Nome da vacina precisa ter no máximo 25
+              caracteres.
+            </div>
+
+          </div>
+
           <mat-hint></mat-hint>
         </mat-form-field>
       </section>
@@ -16,7 +31,7 @@
           <input matInput placeholder="">
           <mat-hint></mat-hint>
         </mat-form-field>
-        <button mat-icon-button class="add-button">
+        <button type="submit" mat-icon-button class="add-button" (click)="onSubmit()">
           <mat-icon>add_circle_outline</mat-icon>
         </button>
       </section>
@@ -43,17 +58,17 @@
           <!-- Dica da Vacina  -->
           <ng-container matColumnDef="dicaDaVacina">
             <th mat-header-cell *matHeaderCellDef> Dica </th>
-            <td mat-cell *matCellDef="let element"> {{element.dicaDaVacina}} </td>
+            <td mat-cell *matCellDef="let vacina"> {{vacina.dicaDaVacina}} </td>
           </ng-container>
 
           <!-- Ações Column -->
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let vacina">
               <button mat-icon-button>
-                <mat-icon mat-icon-button (click)="editElement(element)">edit</mat-icon>
+                <mat-icon mat-icon-button (click)="editElement(vacina)">edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="deleteElement(element.id)">
+              <button mat-icon-button (click)="deleteElement(vacina.id)">
                 <mat-icon>delete</mat-icon>
               </button>
             </td>

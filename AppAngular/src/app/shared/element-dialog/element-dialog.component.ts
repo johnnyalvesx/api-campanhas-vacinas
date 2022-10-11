@@ -9,7 +9,6 @@ import { Vacina } from 'src/app/models/Vacina';
 })
 export class ElementDialogComponent implements OnInit {
   element!: Vacina;
-  isChange!: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -17,13 +16,8 @@ export class ElementDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ElementDialogComponent>,
   ) { }
 
-
   ngOnInit(): void {
-    if (this.data.id != null) {
-      this.isChange = true;
-    } else {
-      this.isChange = false;
-    }
+
   }
 
   onCancel(): void {
