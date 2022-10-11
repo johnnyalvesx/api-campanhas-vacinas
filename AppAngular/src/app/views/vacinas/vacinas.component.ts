@@ -37,20 +37,28 @@ export class VacinasComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = this.fb.group({
-      nomeDaVacina: [null, [Validators.required, Validators.maxLength(25)]]
+      nomeDaVacina: [null, [Validators.required, Validators.maxLength(25)]],
+      dicaDaVacina: [null, [Validators.maxLength(255)]]
     });
   }
 
   hasError(field: string) {
-    return this.form.get(field)!.errors;
+    return this.form.get(field)?.errors;
   }
+
 
   onSubmit() {
     this.submitted = true;
     console.log(this.form.value);
     if (this.form.valid) {
       console.log('Botão funcionando');
+      this.vacinasService.create(this.form.value).subscribe(
+        success => console.log('sucesso'),
+        error => console.error(error),
+        () => console.log('request completo')
+      );
     }
+
   }
 
   openDialog(vacina: Vacina | null): void {

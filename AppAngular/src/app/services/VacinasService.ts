@@ -1,5 +1,5 @@
 
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Vacina } from '../models/Vacina';
@@ -15,7 +15,7 @@ export class VacinasService {
   }
 
   create(vacina: Vacina): Observable<Vacina> {
-    return this.http.post<Vacina>(this.vacinasUrl, vacina);
+    return this.http.post<Vacina>(this.vacinasUrl, vacina).pipe(take(2));
   }
 
   edit(vacina: Vacina): Observable<Vacina> {
@@ -26,3 +26,5 @@ export class VacinasService {
     return this.http.delete<any>(`${this.vacinasUrl}/${id}`);
   }
 }
+
+

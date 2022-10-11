@@ -21,19 +21,32 @@
             </div>
 
           </div>
+          <mat-hint></mat-hint>
 
-          <mat-hint></mat-hint>
         </mat-form-field>
+
       </section>
-      <section class="form-field">
+      <section class="form-field" [formGroup]="form">
         <mat-form-field appearance="outline">
+
           <mat-label>Dica</mat-label>
-          <input matInput placeholder="">
-          <mat-hint></mat-hint>
+          <input matInput formControlName="dicaDaVacina" placeholder=""
+            [ngClass]="{'is-invalid': submitted && hasError('dicaDaVacina')}">
+
+          <div class="invalid-feedback" *ngIf="hasError('dicaDaVacina')">
+
+            <div *ngIf="form.controls['dicaDaVacina'].errors?.['maxlength']">
+              Dica da vacina precisa ter no máximo 255
+              caracteres.
+            </div>
+
+          </div>
+
         </mat-form-field>
         <button type="submit" mat-icon-button class="add-button" (click)="onSubmit()">
           <mat-icon>add_circle_outline</mat-icon>
         </button>
+        <mat-hint></mat-hint>
       </section>
 
       <div class="container">
