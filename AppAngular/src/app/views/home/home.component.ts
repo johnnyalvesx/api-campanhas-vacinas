@@ -1,9 +1,10 @@
 import { VacinasService } from './../../services/VacinasService';
 import { ElementDialogComponent } from './../../shared/element-dialog/element-dialog.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { PeriodicElement } from 'src/app/models/PeriodicElement';
+import { Vacina } from 'src/app/models/Vacina';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,21 @@ import { PeriodicElement } from 'src/app/models/PeriodicElement';
   styleUrls: ['./home.component.scss'],
   providers: [VacinasService]
 })
+
 export class HomeComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
-  displayedColumns: string[] = ['vacinaId', 'nomeDaVacina', 'dicaDaVacina', 'acoes'];
-  dataSource!: PeriodicElement[];
+  displayedColumns: string[] = ['id', 'nomeDaVacina', 'dicaDaVacina', 'acoes'];
+  dataSource!: Vacina[];
+
 
   constructor(
+
     public dialog: MatDialog,
     public vacinasService: VacinasService
   ) {
     this.vacinasService.getElements()
-      .subscribe((data: PeriodicElement[]) => {
+      .subscribe((data: Vacina[]) => {
         console.log(data);
         this.dataSource = data;
       });
@@ -32,17 +36,16 @@ export class HomeComponent implements OnInit {
 
   }
 
-  openDialog(element: PeriodicElement | null): void {
+  openDialog(element: Vacina | null): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       width: '250px',
       data: element === null ? {
-        position: null,
+        id: null,
         nomeDaVacina: '',
         dicaDaVacina: '',
         acoes: ''
       } : {
-        vacinaId: element.vacinaId,
-        position: element.position,
+        id: element.id,
         nomeDaVacina: element.nomeDaVacina,
         dicaDaVacina: element.dicaDaVacina,
         acoes: element.acoes
@@ -52,16 +55,16 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         console.log(result);
-        if (this.dataSource.map(p => p.vacinaId).includes(result.id)) {
+        if (this.dataSource.map(p => p.id).includes(result.id)) {
           this.vacinasService.editElement(result)
-            .subscribe((data: PeriodicElement) => {
-              const index = this.dataSource.findIndex(p => p.vacinaId === data.vacinaId);
+            .subscribe((data: Vacina) => {
+              const index = this.dataSource.findIndex(p => p.id === data.id);
               this.dataSource[index] = data;
               this.table.renderRows();
             });
         } else {
           this.vacinasService.createElements(result)
-            .subscribe((data: PeriodicElement) => {
+            .subscribe((data: Vacina) => {
               this.dataSource.push(data);
               this.table.renderRows();
             });
@@ -70,14 +73,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  editElement(element: PeriodicElement): void {
-    this.openDialog(element);
+  editElement(vacina: Vacina): void {
+    this.openDialog(vacina);
   }
 
-  deleteElement(position: number): void {
-    this.vacinasService.deleteElement(position)
+  deleteElement(id: number): void {
+    this.vacinasService.deleteElement(id)
       .subscribe(() => {
-        this.dataSource = this.dataSource.filter(p => p.vacinaId !== position);
+        this.dataSource = this.dataSource.filter(p => p.id !== id);
       });
 
   };

@@ -1,7 +1,6 @@
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PeriodicElement } from 'src/app/models/PeriodicElement';
+import { Vacina } from 'src/app/models/Vacina';
 
 @Component({
   selector: 'app-element-dialog',
@@ -9,18 +8,18 @@ import { PeriodicElement } from 'src/app/models/PeriodicElement';
   styleUrls: ['./element-dialog.component.scss']
 })
 export class ElementDialogComponent implements OnInit {
-  element!: PeriodicElement;
+  element!: Vacina;
   isChange!: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: PeriodicElement,
+    public data: Vacina,
     public dialogRef: MatDialogRef<ElementDialogComponent>,
   ) { }
 
 
   ngOnInit(): void {
-    if (this.data.position != null) {
+    if (this.data.id != null) {
       this.isChange = true;
     } else {
       this.isChange = false;
@@ -30,5 +29,4 @@ export class ElementDialogComponent implements OnInit {
   onCancel(): void {
     this.dialogRef.close();
   }
-
 }

@@ -2,28 +2,27 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PeriodicElement } from '../models/PeriodicElement';
+import { Vacina } from '../models/Vacina';
 
 @Injectable()
 export class VacinasService {
-  elementApiUrl = 'https://localhost:5001/api/vacinas';
-  // elementApiUrl = 'http://localhost:3000/api/vacinas';
+  vacinasUrl = 'https://localhost:7279/api/vacinas';
 
   constructor(private http: HttpClient) { }
 
-  getElements(): Observable<PeriodicElement[]> {
-    return this.http.get<PeriodicElement[]>(this.elementApiUrl)
+  getElements(): Observable<Vacina[]> {
+    return this.http.get<Vacina[]>(this.vacinasUrl)
   }
 
-  createElements(element: PeriodicElement): Observable<PeriodicElement> {
-    return this.http.post<PeriodicElement>(this.elementApiUrl, element);
+  createElements(element: Vacina): Observable<Vacina> {
+    return this.http.post<Vacina>(this.vacinasUrl, element);
   }
 
-  editElement(element: PeriodicElement): Observable<PeriodicElement> {
-    return this.http.put<PeriodicElement>(this.elementApiUrl, element);
+  editElement(element: Vacina): Observable<Vacina> {
+    return this.http.put<Vacina>(this.vacinasUrl, element);
   }
 
   deleteElement(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.elementApiUrl}/${id}`);
+    return this.http.delete<any>(`${this.vacinasUrl}/${id}`);
   }
 }
