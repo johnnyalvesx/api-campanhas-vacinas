@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AlertaDialogComponent } from './../../shared/alerta-dialog/alerta-dialog.component';
 import { VacinasService } from '../../services/VacinasService';
 import { ElementDialogComponent } from '../../shared/element-dialog/element-dialog.component';
@@ -8,6 +9,7 @@ import { Vacina } from 'src/app/models/Vacina';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertaDialogService } from 'src/app/shared/alerta-dialog.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vacinas',
@@ -30,7 +32,8 @@ export class VacinasComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     public vacinasService: VacinasService,
-    private alertaService: AlertaDialogService
+    private alertaService: AlertaDialogService,
+    private modal: AlertaDialogService
 
   ) {
     this.vacinasService.get()
@@ -58,8 +61,8 @@ export class VacinasComponent implements OnInit {
     if (this.form.valid) {
       console.log('Botão funcionando');
       this.vacinasService.create(this.form.value).subscribe(
-        success => console.log('sucesso'),
-        error => console.error(error),
+        success => this.modal.showAlertSuccess('Vacina cadastrada com sucesso.'),
+        error => this.modal.showAlertDanger('Erro ao cadastrar vacina, verifique todos os campos.'),
         () => console.log('request completo')
       );
     }

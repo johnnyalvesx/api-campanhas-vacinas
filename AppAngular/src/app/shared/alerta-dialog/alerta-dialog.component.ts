@@ -20,5 +20,4 @@ export class AlertaDialogComponent implements OnInit {
   onClose():void {
     this.bsModalRef.hide();
   }
-
 }
