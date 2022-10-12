@@ -20,13 +20,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ElementDialogComponent } from './shared/element-dialog/element-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { AlertaDialogComponent } from './shared/alerta-dialog/alerta-dialog.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
     AppComponent,
     VacinasComponent,
     HeaderComponent,
-    ElementDialogComponent
+    ElementDialogComponent,
+    AlertaDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
