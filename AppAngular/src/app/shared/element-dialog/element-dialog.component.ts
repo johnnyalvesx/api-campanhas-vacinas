@@ -8,6 +8,7 @@ import { Vacina } from 'src/app/models/Vacina';
   styleUrls: ['./element-dialog.component.scss']
 })
 export class ElementDialogComponent implements OnInit {
+
   element!: Vacina;
 
   constructor(

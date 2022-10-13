@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Editar campanha</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome da Campanha</mat-label>
+    <input matInput [(ngModel)]="data.nomeDaCampanha">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Data de Ínicio</mat-label>
+    <input matInput [(ngModel)]="data.dataDeInicio">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Data de Término</mat-label>
+    <input matInput [(ngModel)]="data.dataDeTermino">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Status da Campanha</mat-label>
+    <input matInput [(ngModel)]="data.statusDaCampanha">
+  </mat-form-field>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Nome da Vacina</mat-label>
+    <input matInput [(ngModel)]="data.nomeDaVacina">
+  </mat-form-field> -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
+</div>
