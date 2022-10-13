@@ -18,11 +18,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ElementDialogComponent } from './shared/element-dialog/element-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { AlertaDialogComponent } from './shared/alerta-dialog/alerta-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeletarVacinaDialogComponent } from './shared/deletar-vacina-dialog/deletar-vacina-dialog.component';
+import { CampanhasViewComponent } from './views/campanhas-view/campanhas-view.component';
+import { DatepickerComponent } from './shared/datepicker/datepicker.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EditarCampanhaComponent } from './shared/editar-campanha/editar-campanha.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,10 @@ import { DeletarVacinaDialogComponent } from './shared/deletar-vacina-dialog/del
     HeaderComponent,
     ElementDialogComponent,
     AlertaDialogComponent,
-    DeletarVacinaDialogComponent
+    DeletarVacinaDialogComponent,
+    CampanhasViewComponent,
+    DatepickerComponent,
+    EditarCampanhaComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +57,10 @@ import { DeletarVacinaDialogComponent } from './shared/deletar-vacina-dialog/del
     MatTableModule,
     MatDialogModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
   ],
   entryComponents: [DeletarVacinaDialogComponent],
   providers: [HttpClientModule],

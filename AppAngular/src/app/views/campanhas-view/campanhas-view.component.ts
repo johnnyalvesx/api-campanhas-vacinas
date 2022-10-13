@@ -1,3 +1,5 @@
+import { EditarCampanhaComponent } from './../../shared/editar-campanha/editar-campanha.component';
+import { DatepickerComponent } from './../../shared/datepicker/datepicker.component';
 import { CampanhasService } from './../../services/CampanhasService';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -13,13 +15,13 @@ import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-di
   selector: 'app-campanhas-view',
   templateUrl: './campanhas-view.component.html',
   styleUrls: ['./campanhas-view.component.scss'],
-  providers: [CampanhasService]
+  providers: [CampanhasService, DatepickerComponent]
 })
 export class CampanhasViewComponent implements OnInit {
 
   @ViewChild(MatTable)
   table!: MatTable<any>;
-  displayedColumns: string[] = ['id', 'nomeDaCampanha', 'data', 'statusDaCampanha', 'acoes'];
+  displayedColumns: string[] = ['id', 'nomeDaCampanha', 'data', 'statusDaCampanha', 'nomeDaVacina', 'acoes'];
   dataSource!: Campanha[];
   form!: FormGroup;
   submitted = false;
@@ -31,7 +33,7 @@ export class CampanhasViewComponent implements OnInit {
     public dialog: MatDialog,
     public campanhasService: CampanhasService,
     private alertaService: AlertaDialogService,
-    private modal: AlertaDialogService
+    private modal: AlertaDialogService,
 
   ) {
     this.campanhasService.get()
@@ -47,7 +49,7 @@ export class CampanhasViewComponent implements OnInit {
       dataDeInicio: [null, []],
       dataDeTermino: [null, []],
       statusDaCampanha: [null, []],
-      nomeDaVacina: [null, []]
+      // nomeDaVacina: [null, []]
     });
   }
 
@@ -69,25 +71,25 @@ export class CampanhasViewComponent implements OnInit {
   }
 
   openDialog(campanha: Campanha | null, enterAnimationDuration?: string, exitAnimationDuration?: string,): void {
-    const dialogRef = this.dialog.open(ElementDialogComponent, {
-      // width: '250px',
-      // enterAnimationDuration: "500ms",
-      // exitAnimationDuration: "500ms",
-      // data: campanha === null ? {
-      //   id: null,
-      //   nomeDaCampanha: '',
-      //   dataDeInicio: '',
-      //   dataDeTermino: '',
-      //   statusDaCampanha: '',
-      //   nomeDaVacina: ''
-      // } : {
-      //   id: campanha.id,
-      //   nomeDaCampanha: campanha.nomeDaCampanha,
-      //   dataDeInicio: campanha.dataDeInicio,
-      //   dataDeTermino: campanha.dataDeTermino,
-      //   statusDaCampanha: campanha.statusDaCampanha,
-      //   nomeDaVacina: campanha.nomeDaVacina
-      // }
+    const dialogRef = this.dialog.open(EditarCampanhaComponent, {
+      width: '300px',
+      enterAnimationDuration: "500ms",
+      exitAnimationDuration: "500ms",
+      data: campanha === null ? {
+        id: null,
+        nomeDaCampanha: '',
+        dataDeInicio: null,
+        dataDeTermino: null,
+        statusDaCampanha: '',
+        nomeDaVacina: ''
+      } : {
+        id: campanha.id,
+        nomeDaCampanha: campanha.nomeDaCampanha,
+        dataDeInicio: campanha.dataDeInicio,
+        dataDeTermino: campanha.dataDeTermino,
+        statusDaCampanha: campanha.statusDaCampanha,
+        // nomeDaVacina: campanha.nomeDaVacina
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

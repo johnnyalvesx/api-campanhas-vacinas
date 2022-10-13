@@ -34,8 +34,6 @@ builder.Services.AddScoped<IVacinaManager, VacinaManager>();
 builder.Services.AddScoped<ICampanhaRepository, CampanhaRepository>();
 builder.Services.AddScoped<ICampanhaManager, CampanhaManager>();
 
-
-
 builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();

@@ -5,23 +5,23 @@ import { Campanha } from "../models/Campanha";
 
 @Injectable()
 export class CampanhasService {
-  vacinasUrl = 'https://localhost:7279/api/campanhas';
+  campanhasUrl = 'https://localhost:7279/api/campanhas';
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Campanha[]> {
-    return this.http.get<Campanha[]>(this.vacinasUrl)
+  public get(): Observable<Campanha[]> {
+    return this.http.get<Campanha[]>(this.campanhasUrl)
   }
 
-  create(vacina: Campanha): Observable<Campanha> {
-    return this.http.post<Campanha>(this.vacinasUrl, vacina).pipe(take(2));
+  public create(campanha: Campanha): Observable<Campanha> {
+    return this.http.post<Campanha>(this.campanhasUrl, campanha);
   }
 
-  edit(vacina: Campanha): Observable<Campanha> {
-    return this.http.put<Campanha>(this.vacinasUrl, vacina);
+  public edit(campanha: Campanha): Observable<Campanha> {
+    return this.http.put<Campanha>(this.campanhasUrl, campanha);
   }
 
-  delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.vacinasUrl}/${id}`).pipe(take(1));
+  public delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.campanhasUrl}/${id}`).pipe(take(1));
   }
 }

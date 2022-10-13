@@ -4,4 +4,5 @@ export interface Campanha {
   dataDeInicio: Date;
   dataDeTermino: Date;
   statusDaCampanha: string;
+  // nomeDaVacina: string;
 }

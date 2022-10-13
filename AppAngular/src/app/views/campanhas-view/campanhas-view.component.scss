@@ -15,12 +15,12 @@ body {
 .wrapper {
   /* layout */
   margin-inline: auto;
-  width: 65%;
-  height: 100vh;
-  padding-bottom: 0;
-  display: flexbox;
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+
+  // height: 100vh;
+  // padding-bottom: 0;
+  // display: flexbox;
+  // -webkit-flex-wrap: nowrap;
+  // flex-wrap: nowrap;
 }
 
 .slide {
@@ -31,12 +31,12 @@ body {
   flex: auto;
   display: flexbox;
   /* content styling OPTIONAL*/
-  align-items: center;
-  justify-content: center;
+  // align-items: center;
+  // justify-content: center;
   padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 40px;
-  padding-right: 0px;
+  padding-right: 40px;
   /* background styling */
   background-size: cover;
   background-position: center;
@@ -55,10 +55,10 @@ body {
 }
 
 mat-form-field {
-  width: 90%;
+  width: 95%;
   padding-right: 0px;
   padding-top: 0px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .mat-form-field-wrapper {

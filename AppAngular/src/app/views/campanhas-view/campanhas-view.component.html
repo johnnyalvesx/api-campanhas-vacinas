@@ -1,77 +1,96 @@
 <body>
 
-  <div class="wrapper">
+  <div class="wrapper" fxFlex.lg="65" fxFlex>
     <div class="slide">
       <h1 class="titulo-font">Cadastrar Campanha</h1>
 
+
       <section class="form-field" [formGroup]="form">
-        <mat-form-field appearance="outline">
-          <mat-label>Nome da campanha</mat-label>
-          <input matInput formControlName="nomeDaCampanha" placeholder="Nome da campanha"
-            [ngClass]="{'is-invalid': submitted && hasError('nomeDaCampanha')}">
+        <div fxLayout="row wrap">
+          <div fxFlex.lg="50" fxFill fxLayoutAlign="start center">
+            <mat-form-field appearance="outline">
+              <mat-label>Nome da campanha</mat-label>
+              <input matInput formControlName="nomeDaCampanha" placeholder="Nome da campanha"
+                [ngClass]="{'is-invalid': submitted && hasError('nomeDaCampanha')}">
+              <mat-hint></mat-hint>
 
-          <mat-hint></mat-hint>
+            </mat-form-field>
+          </div>
+          <div fxFlex.lg="23" fxFill fxLayoutAlign="start center">
+            <mat-form-field appearance="outline">
+              <mat-label>Data de Início</mat-label>
+              <input matInput placeholder="" formControlName="dataDeInicio"
+                [ngClass]="{'is-invalid': submitted && hasError('dataDeInicio')}">
+              <div class="invalid-feedback" *ngIf="hasError('dataDeInicio')">
+              </div>
+              <mat-datepicker-toggle matSuffix>
+                <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+              </mat-datepicker-toggle>
+            </mat-form-field>
+          </div>
+          <div fxFlex.lg="23" fxFill fxLayoutAlign="start center">
+            <mat-form-field appearance="outline">
 
-        </mat-form-field>
-        <mat-form-field appearance="outline">
+              <mat-label>Data de Término</mat-label>
+              <input matInput formControlName="dataDeTermino" placeholder=""
+                [ngClass]="{'is-invalid': submitted && hasError('dataDeTermino')}">
+              <mat-datepicker-toggle matSuffix>
+                <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+              </mat-datepicker-toggle>
 
-          <mat-label>Data de Início</mat-label>
-          <input matInput formControlName="dataDeInicio" placeholder=""
-            [ngClass]="{'is-invalid': submitted && hasError('dataDeInicio')}">
-
-          <div class="invalid-feedback" *ngIf="hasError('dataDeInicio')">
+            </mat-form-field>
 
           </div>
-
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-
-          <mat-label>Data de Término</mat-label>
-          <input matInput formControlName="dataDeTermino" placeholder=""
-            [ngClass]="{'is-invalid': submitted && hasError('dataDeTermino')}">
-
-          <div class="invalid-feedback" *ngIf="hasError('dataDeTermino')">
+          <div fxFlex.lg="" fxFill fxLayoutAlign="start center">
 
           </div>
+        </div>
 
-        </mat-form-field>
+        <div fxLayout="row wrap">
+          <div fxFlex.lg="48" fxFill fxLayoutAlign="start center">
+            <mat-form-field appearance="outline">
 
-        <mat-form-field appearance="outline">
+              <mat-label>Status da Campanha</mat-label>
+              <input matInput formControlName="statusDaCampanha" placeholder=""
+                [ngClass]="{'is-invalid': submitted && hasError('statusDaCampanha')}">
 
-          <mat-label>Status da Campanha</mat-label>
-          <input matInput formControlName="statusDaCampanha" placeholder=""
-            [ngClass]="{'is-invalid': submitted && hasError('statusDaCampanha')}">
+              <div class="invalid-feedback" *ngIf="hasError('statusDaCampanha')">
 
-          <div class="invalid-feedback" *ngIf="hasError('statusDaCampanha')">
+              </div>
+
+            </mat-form-field>
+          </div>
+          <div fxFlex.lg="49" fxFill fxLayoutAlign="start center">
+            <mat-form-field appearance="outline">
+
+              <mat-label>Nome da Vacina</mat-label>
+              <input matInput formControlName="nomeDaVacina" placeholder=""
+                [ngClass]="{'is-invalid': submitted && hasError('nomeDaVacina')}">
+
+              <div class="invalid-feedback" *ngIf="hasError('nomeDaVacina')">
+
+              </div>
+
+            </mat-form-field>
 
           </div>
-
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-
-          <mat-label>Nome da Vacina</mat-label>
-          <input matInput formControlName="nomeDaVacina" placeholder=""
-            [ngClass]="{'is-invalid': submitted && hasError('nomeDaVacina')}">
-
-          <div class="invalid-feedback" *ngIf="hasError('nomeDaVacina')">
-
+          <div fxFlex.lg="" fxFill fxLayoutAlign="center">
+            <button type="submit" mat-icon-button class="add-button" (click)="onSubmit()">
+              <mat-icon>add_circle_outline</mat-icon>
+            </button>
           </div>
 
-        </mat-form-field>
 
-        <button type="submit" mat-icon-button class="add-button" (click)="onSubmit()">
-          <mat-icon>add_circle_outline</mat-icon>
-        </button>
+
+        </div>
+
         <mat-hint></mat-hint>
 
-        <!-- </section>
-
-      <section class="form-field" [formGroup]="form"> -->
 
       </section>
 
       <div class="container">
+
 
         <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z0">
 
@@ -87,7 +106,8 @@
 
           <ng-container matColumnDef="data">
             <th mat-header-cell *matHeaderCellDef> Data </th>
-            <td mat-cell *matCellDef="let campanha"> {{campanha.dataDeInicio | date : 'M/d/yyyy'}} - {{campanha.dataDeTermino | date : 'M/d/yyyy'}}</td>
+            <td mat-cell *matCellDef="let campanha"> {{campanha.dataDeInicio | date : 'M/d/yyyy'}} -
+              {{campanha.dataDeTermino | date : 'M/d/yyyy'}}</td>
           </ng-container>
 
           <ng-container matColumnDef="statusDaCampanha">
@@ -95,13 +115,18 @@
             <td mat-cell *matCellDef="let campanha"> {{campanha.statusDaCampanha}} </td>
           </ng-container>
 
+          <ng-container matColumnDef="nomeDaVacina">
+            <th mat-header-cell *matHeaderCellDef> Nome da vacina </th>
+            <td mat-cell *matCellDef="let campanha"> {{campanha.nomeDaVacina}} </td>
+          </ng-container>
+
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
-            <td mat-cell *matCellDef="let vacina">
+            <td mat-cell *matCellDef="let campanha">
               <button mat-icon-button>
-                <mat-icon mat-icon-button (click)="editCampanha(vacina)">edit</mat-icon>
+                <mat-icon mat-icon-button (click)="editCampanha(campanha)">edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="deleteCampanha(vacina.id)">
+              <button mat-icon-button (click)="deleteCampanha(campanha.id)">
                 <mat-icon>delete</mat-icon>
               </button>
             </td>

@@ -1,5 +1,5 @@
 
-import { Observable, take } from 'rxjs';
+import { Observable, Subject, take, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Vacina } from '../models/Vacina';
@@ -10,19 +10,30 @@ export class VacinasService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Vacina[]> {
-    return this.http.get<Vacina[]>(this.vacinasUrl)
+  private _refreshNeeded$ = new Subject<void>;
+
+  get refreshNeeded() {
+    return this._refreshNeeded$;
   }
 
-  create(vacina: Vacina): Observable<Vacina> {
-    return this.http.post<Vacina>(this.vacinasUrl, vacina).pipe(take(2));
+  public get(): Observable<Vacina[]> {
+    return this.http.get<Vacina[]>(this.vacinasUrl);
   }
 
-  edit(vacina: Vacina): Observable<Vacina> {
+  public create(vacina: Vacina): Observable<Vacina> {
+    return this.http.post<Vacina>(this.vacinasUrl, vacina)
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
+  }
+
+  public edit(vacina: Vacina): Observable<Vacina> {
     return this.http.put<Vacina>(this.vacinasUrl, vacina);
   }
 
-  delete(id: number): Observable<any> {
+  public delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.vacinasUrl}/${id}`).pipe(take(1));
   }
 }

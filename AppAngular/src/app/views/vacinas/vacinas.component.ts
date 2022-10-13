@@ -31,7 +31,6 @@ export class VacinasComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     public vacinasService: VacinasService,
-    // private alertaService: AlertaDialogService,
     private modal: AlertaDialogService
 
   ) {
@@ -44,10 +43,24 @@ export class VacinasComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.vacinasService.refreshNeeded
+      .subscribe(() => {
+        this.listarTodasAsVacinas();
+      });
+
+
     this.form = this.fb.group({
       nomeDaVacina: [null, [Validators.required, Validators.maxLength(25)]],
       dicaDaVacina: [null, [Validators.maxLength(255)]]
     });
+
+  }
+
+  private listarTodasAsVacinas() {
+    this.vacinasService.get()
+      .subscribe(
+        (dataSource: Vacina[]) => this.dataSource = dataSource
+      );
   }
 
   hasError(field: string) {
@@ -58,12 +71,13 @@ export class VacinasComponent implements OnInit {
     this.submitted = true;
     console.log(this.form.value);
     if (this.form.valid) {
-      console.log('Botão funcionando');
+
       this.vacinasService.create(this.form.value).subscribe(
         success => this.modal.showAlertSuccess('Vacina cadastrada com sucesso.'),
         error => this.modal.showAlertDanger('Erro ao cadastrar vacina, verifique todos os campos.'),
         () => console.log('request completo')
       );
+
     }
   }
 
@@ -127,5 +141,4 @@ export class VacinasComponent implements OnInit {
   handleError() {
     this.modal.showAlertDanger;
   }
-
 }
