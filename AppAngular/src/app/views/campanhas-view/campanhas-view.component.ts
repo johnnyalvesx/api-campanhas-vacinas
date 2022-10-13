@@ -9,8 +9,6 @@ import { MatTable } from '@angular/material/table';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Campanha } from 'src/app/models/Campanha';
 import { AlertaDialogService } from 'src/app/shared/alerta-dialog.service';
-import { DeletarVacinaDialogComponent } from 'src/app/shared/deletar-vacina-dialog/deletar-vacina-dialog.component';
-import { ElementDialogComponent } from 'src/app/shared/element-dialog/element-dialog.component';
 
 @Component({
   selector: 'app-campanhas-view',
@@ -45,6 +43,13 @@ export class CampanhasViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.campanhasService.refreshNeeded
+      .subscribe(() => {
+        this.listarTodasAsCampanhas();
+      });
+
+
     this.form = this.fb.group({
       nomeDaCampanha: [null, []],
       dataDeInicio: [null, []],
@@ -52,6 +57,13 @@ export class CampanhasViewComponent implements OnInit {
       statusDaCampanha: [null, []],
       nomeDaVacina: [null, []]
     });
+  }
+
+  private listarTodasAsCampanhas() {
+    this.campanhasService.get()
+      .subscribe(
+        (dataSource: Campanha[]) => this.dataSource = dataSource
+      );
   }
 
   hasError(field: string) {
