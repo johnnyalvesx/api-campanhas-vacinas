@@ -22,6 +22,7 @@ import { ElementDialogComponent } from './shared/element-dialog/element-dialog.c
 import { FormsModule } from '@angular/forms';
 import { AlertaDialogComponent } from './shared/alerta-dialog/alerta-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DeletarVacinaDialogComponent } from './shared/deletar-vacina-dialog/deletar-vacina-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     VacinasComponent,
     HeaderComponent,
     ElementDialogComponent,
-    AlertaDialogComponent
+    AlertaDialogComponent,
+    DeletarVacinaDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     ModalModule.forRoot()
   ],
+  entryComponents: [DeletarVacinaDialogComponent],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })

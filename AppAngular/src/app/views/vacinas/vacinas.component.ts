@@ -3,19 +3,20 @@ import { AlertaDialogComponent } from './../../shared/alerta-dialog/alerta-dialo
 import { VacinasService } from '../../services/VacinasService';
 import { ElementDialogComponent } from '../../shared/element-dialog/element-dialog.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Vacina } from 'src/app/models/Vacina';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertaDialogService } from 'src/app/shared/alerta-dialog.service';
 import { Location } from '@angular/common';
+import { DeletarVacinaDialogComponent } from 'src/app/shared/deletar-vacina-dialog/deletar-vacina-dialog.component';
 
 @Component({
   selector: 'app-vacinas',
   templateUrl: './vacinas.component.html',
   styleUrls: ['./vacinas.component.scss'],
-  providers: [VacinasService]
+  providers: [VacinasService, DeletarVacinaDialogComponent]
 })
 
 export class VacinasComponent implements OnInit {
@@ -27,6 +28,7 @@ export class VacinasComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
   bsModalRef!: BsModalRef;
+  vacina!: Vacina;
 
   constructor(
     private fb: FormBuilder,
@@ -66,12 +68,13 @@ export class VacinasComponent implements OnInit {
         () => console.log('request completo')
       );
     }
-
   }
 
-  openDialog(vacina: Vacina | null): void {
+  openDialog(vacina: Vacina | null, enterAnimationDuration?: string, exitAnimationDuration?: string,): void {
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       width: '250px',
+      enterAnimationDuration: "500ms",
+      exitAnimationDuration: "500ms",
       data: vacina === null ? {
         id: null,
         nomeDaVacina: '',
@@ -104,17 +107,25 @@ export class VacinasComponent implements OnInit {
     });
   }
 
-  editElement(vacina: Vacina): void {
+  editVacina(vacina: Vacina): void {
     this.openDialog(vacina);
   }
 
   deleteElement(id: number): void {
-    this.vacinasService.delete(id)
-      .subscribe(() => {
-        this.dataSource = this.dataSource.filter(p => p.id !== id);
-      });
+    const dialogRef = this.dialog.open(DeletarVacinaDialogComponent, {
+      width: '300px',
+      data: 'Tem certeza? (vacinas component)'
+    });
+    dialogRef.afterClosed().subscribe(res => {
 
-  };
+      if (res) {
+        this.vacinasService.delete(id)
+          .subscribe(() => {
+            this.dataSource = this.dataSource.filter(p => p.id !== id);
+          });
+      }
+    });
+  }
 
   handleError() {
     this.alertaService.showAlertDanger;

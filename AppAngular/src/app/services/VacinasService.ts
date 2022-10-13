@@ -23,7 +23,7 @@ export class VacinasService {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.vacinasUrl}/${id}`);
+    return this.http.delete<any>(`${this.vacinasUrl}/${id}`).pipe(take(1));
   }
 }
 
