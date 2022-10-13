@@ -1,15 +1,12 @@
-import { Router } from '@angular/router';
-import { AlertaDialogComponent } from './../../shared/alerta-dialog/alerta-dialog.component';
 import { VacinasService } from '../../services/VacinasService';
 import { ElementDialogComponent } from '../../shared/element-dialog/element-dialog.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Vacina } from 'src/app/models/Vacina';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertaDialogService } from 'src/app/shared/alerta-dialog.service';
-import { Location } from '@angular/common';
 import { DeletarVacinaDialogComponent } from 'src/app/shared/deletar-vacina-dialog/deletar-vacina-dialog.component';
 
 @Component({
@@ -34,7 +31,7 @@ export class VacinasComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     public vacinasService: VacinasService,
-    private alertaService: AlertaDialogService,
+    // private alertaService: AlertaDialogService,
     private modal: AlertaDialogService
 
   ) {
@@ -111,7 +108,7 @@ export class VacinasComponent implements OnInit {
     this.openDialog(vacina);
   }
 
-  deleteElement(id: number): void {
+  deleteVacina(id: number): void {
     const dialogRef = this.dialog.open(DeletarVacinaDialogComponent, {
       width: '300px',
       data: 'Tem certeza? (vacinas component)'
@@ -128,7 +125,7 @@ export class VacinasComponent implements OnInit {
   }
 
   handleError() {
-    this.alertaService.showAlertDanger;
+    this.modal.showAlertDanger;
   }
 
 }
