@@ -5,40 +5,53 @@
       <h1 class="titulo-font">Cadastrar Vacina</h1>
 
       <section class="form-field" [formGroup]="form">
-        <mat-form-field appearance="outline">
-          <mat-label>Nome da vacina</mat-label>
-          <input matInput formControlName="nomeDaVacina" placeholder="Nome da vacina - Mês/Ano"
-            [ngClass]="{'is-invalid': submitted && hasError('nomeDaVacina')}">
 
-          <div class="invalid-feedback" *ngIf="hasError('nomeDaVacina')">
+        <!-- <div fxLayout="row wrap">
+          <div fxFlex.lg="100" fxFill fxLayoutAlign="start center"> -->
+            <mat-form-field appearance="outline">
+              <mat-label>Nome da vacina</mat-label>
+              <input matInput formControlName="nomeDaVacina" placeholder="Nome da vacina - Mês/Ano"
+                [ngClass]="{'is-invalid': submitted && hasError('nomeDaVacina')}">
 
-            <div *ngIf="form.controls['nomeDaVacina'].errors?.['required']">
-              Por favor informe um nome para a vacina.
-            </div>
-            <div *ngIf="form.controls['nomeDaVacina'].errors?.['maxlength']">
-              Nome da vacina precisa ter no máximo 25
-              caracteres.
-            </div>
+              <div class="invalid-feedback" *ngIf="hasError('nomeDaVacina')">
 
-          </div>
-          <mat-hint></mat-hint>
+                <div *ngIf="form.controls['nomeDaVacina'].errors?.['required']">
+                  Por favor informe um nome para a vacina.
+                </div>
+                <div *ngIf="form.controls['nomeDaVacina'].errors?.['maxlength']">
+                  Nome da vacina precisa ter no máximo 25
+                  caracteres.
+                </div>
 
-        </mat-form-field>
+              </div>
+              <mat-hint></mat-hint>
 
+            </mat-form-field>
+
+          <!-- </div> -->
+        <!-- </div> -->
+
+        <!-- <div fxLayout="row wrap">
+          <div fxFlex.lg="100" fxFill fxLayoutAlign="start center"> -->
+            <section class="form-field" [formGroup]="form">
+              <mat-form-field appearance="outline">
+
+                <mat-label>Dica</mat-label>
+                <input matInput formControlName="dicaDaVacina" placeholder=""
+                [ngClass]="{'is-invalid': submitted && hasError('dicaDaVacina')}">
+
+              </mat-form-field>
+              <button type="submit" mat-icon-button class="add-button" (click)="onSubmit()">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+              <mat-hint></mat-hint>
+            </section>
+
+          <!-- </div>
+        </div> -->
       </section>
-      <section class="form-field" [formGroup]="form">
-        <mat-form-field appearance="outline">
 
-          <mat-label>Dica</mat-label>
-          <input matInput formControlName="dicaDaVacina" placeholder=""
-            [ngClass]="{'is-invalid': submitted && hasError('dicaDaVacina')}">
 
-        </mat-form-field>
-        <button type="submit" mat-icon-button class="add-button" (click)="onSubmit()">
-          <mat-icon>add_circle_outline</mat-icon>
-        </button>
-        <mat-hint></mat-hint>
-      </section>
 
       <div class="container">
 
@@ -78,5 +91,4 @@
 
     </div>
   </div>
-
 </body>

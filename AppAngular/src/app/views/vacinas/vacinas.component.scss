@@ -16,7 +16,7 @@ body {
   /* layout */
   margin-inline: auto;
   width: 65%;
-  height: 100vh;
+  height: 10vh;
   padding-bottom: 0;
   display: flexbox;
   -webkit-flex-wrap: nowrap;
@@ -55,10 +55,10 @@ body {
 }
 
 mat-form-field {
-  width: 90%;
+  width: 93%;
   padding-right: 0px;
   padding-top: 0px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .mat-form-field-wrapper {
