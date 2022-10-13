@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Delete file</h1>
-<div mat-dialog-content>
-  Gostaria de deletar a vacina selecionada?
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Não</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Sim</button>
+<div class="deleteDialog">
+  <h1 mat-dialog-title bold>{{message}}</h1>
+  <div mat-dialog-content>
+    Tem certeza de que quer excluir a vacina?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" >Confirmar</button>
+  </div>
 </div>

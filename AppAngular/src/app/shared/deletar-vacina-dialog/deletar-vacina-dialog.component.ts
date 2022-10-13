@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { VacinasService } from './../../services/VacinasService';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Vacina } from 'src/app/models/Vacina';
+import { VacinasComponent } from 'src/app/views/vacinas/vacinas.component';
 
 @Component({
   selector: 'app-deletar-vacina-dialog',
   templateUrl: './deletar-vacina-dialog.component.html',
-  styleUrls: ['./deletar-vacina-dialog.component.scss']
+  styleUrls: ['./deletar-vacina-dialog.component.scss'],
+  providers: [VacinasService, VacinasService]
 })
 export class DeletarVacinaDialogComponent implements OnInit {
 
-  constructor(
-    public dialog: MatDialog,
+  vacina!: Vacina;
+  dataSource!: Vacina[];
 
-  ) { }
+  constructor(
+    public dialogRef: MatDialogRef<DeletarVacinaDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public message: string) { }
 
   ngOnInit(): void {
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DeletarVacinaDialogComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  //   this.dialog.open(DeletarVacinaDialogComponent, {
 
+  //   });
+
+  // }
+
+  onConfirmDelete() {
+    
   }
+
 }
