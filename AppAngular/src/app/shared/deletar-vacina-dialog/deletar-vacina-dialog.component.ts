@@ -22,15 +22,8 @@ export class DeletarVacinaDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-  //   this.dialog.open(DeletarVacinaDialogComponent, {
-
-  //   });
-
-  // }
-
   onConfirmDelete() {
-    
+
   }
 
 }

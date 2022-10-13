@@ -1,3 +1,4 @@
+import { DeletarCampanhaDialogComponent } from './../../shared/deletar-campanha-dialog/deletar-campanha-dialog.component';
 import { EditarCampanhaComponent } from './../../shared/editar-campanha/editar-campanha.component';
 import { DatepickerComponent } from './../../shared/datepicker/datepicker.component';
 import { CampanhasService } from './../../services/CampanhasService';
@@ -49,7 +50,7 @@ export class CampanhasViewComponent implements OnInit {
       dataDeInicio: [null, []],
       dataDeTermino: [null, []],
       statusDaCampanha: [null, []],
-      // nomeDaVacina: [null, []]
+      nomeDaVacina: [null, []]
     });
   }
 
@@ -118,9 +119,9 @@ export class CampanhasViewComponent implements OnInit {
   }
 
   deleteCampanha(id: number): void {
-    const dialogRef = this.dialog.open(DeletarVacinaDialogComponent, {
+    const dialogRef = this.dialog.open(DeletarCampanhaDialogComponent, {
       width: '300px',
-      data: 'Tem certeza? (vacinas component)'
+      data: 'Excluir'
     });
     dialogRef.afterClosed().subscribe(res => {
 
@@ -136,5 +137,4 @@ export class CampanhasViewComponent implements OnInit {
   handleError() {
     this.alertaService.showAlertDanger;
   }
-
 }

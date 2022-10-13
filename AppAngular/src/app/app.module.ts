@@ -28,6 +28,7 @@ import { CampanhasViewComponent } from './views/campanhas-view/campanhas-view.co
 import { DatepickerComponent } from './shared/datepicker/datepicker.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditarCampanhaComponent } from './shared/editar-campanha/editar-campanha.component';
+import { DeletarCampanhaDialogComponent } from './shared/deletar-campanha-dialog/deletar-campanha-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EditarCampanhaComponent } from './shared/editar-campanha/editar-campanh
     DeletarVacinaDialogComponent,
     CampanhasViewComponent,
     DatepickerComponent,
-    EditarCampanhaComponent
+    EditarCampanhaComponent,
+    DeletarCampanhaDialogComponent
   ],
   imports: [
     BrowserModule,

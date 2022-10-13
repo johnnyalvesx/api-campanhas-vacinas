@@ -125,7 +125,7 @@ export class VacinasComponent implements OnInit {
   deleteVacina(id: number): void {
     const dialogRef = this.dialog.open(DeletarVacinaDialogComponent, {
       width: '300px',
-      data: 'Tem certeza? (vacinas component)'
+      data: 'Excluir'
     });
     dialogRef.afterClosed().subscribe(res => {
 
