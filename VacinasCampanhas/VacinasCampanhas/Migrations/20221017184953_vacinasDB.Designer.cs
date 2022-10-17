@@ -12,7 +12,7 @@ using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 namespace VacinasCampanhas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20221006175305_vacinasDB")]
+    [Migration("20221017184953_vacinasDB")]
     partial class vacinasDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,46 +26,70 @@ namespace VacinasCampanhas.Migrations
 
             modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Campanha", b =>
                 {
-                    b.Property<int?>("CampanhaId")
+                    b.Property<int>("CampanhaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("CampanhaId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CampanhaId"), 1L, 1);
 
-                    b.Property<DateTime?>("DataDeInicio")
+                    b.Property<DateTime>("DataDeInicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DataDeTermino")
+                    b.Property<DateTime>("DataDeTermino")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NomeDaCampanha")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StatusDaCampanha")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("VacinaId")
+                        .HasColumnType("int");
+
                     b.HasKey("CampanhaId");
+
+                    b.HasIndex("VacinaId");
 
                     b.ToTable("Campanhas");
                 });
 
             modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("VacinaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VacinaId"), 1L, 1);
 
                     b.Property<string>("DicaDaVacina")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeDaVacina")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("VacinaId");
 
                     b.ToTable("Vacinas");
+                });
+
+            modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Campanha", b =>
+                {
+                    b.HasOne("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", "Vacina")
+                        .WithMany("Campanhas")
+                        .HasForeignKey("VacinaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Vacina");
+                });
+
+            modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", b =>
+                {
+                    b.Navigation("Campanhas");
                 });
 #pragma warning restore 612, 618
         }

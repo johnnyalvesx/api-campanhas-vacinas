@@ -33,7 +33,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         public async Task<IActionResult> CadastrarVacinaAsync(Vacina vacina)
         {
             var vacinaInserida = await vacinaManager.CadastrarVacinaAsync(vacina);
-            return CreatedAtAction(nameof(PegarVacinasAsync), new { id = vacina.Id }, vacina);
+            return CreatedAtAction(nameof(PegarVacinasAsync), new { id = vacina.VacinaId }, vacina);
         }
 
         [HttpPut]

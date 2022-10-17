@@ -33,7 +33,7 @@ namespace VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Reposit
 
         public async Task<Vacina> AtualizarVacinaAsync(Vacina vacina)
         {
-            var vacinaConsultada = await contexto.Vacinas.FindAsync(vacina.Id);
+            var vacinaConsultada = await contexto.Vacinas.FindAsync(vacina.VacinaId);
             if (vacinaConsultada == null)
             {
                 return null;
