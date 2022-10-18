@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VacinasCampanhas.VacinasCampanhas.Application.Models;
+using VacinasCampanhas.VacinasCampanhas.Application.UseCases;
 using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 
@@ -10,9 +12,12 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
     {
         private readonly ICampanhaManager campanhaManager;
 
-        public CampanhasController(ICampanhaManager campanhaManager)
+        private readonly IUseCase<CriarCampanhaRequestDTO> criarCampanhaUseCase;
+
+        public CampanhasController(ICampanhaManager campanhaManager, IUseCase<CriarCampanhaRequestDTO> criarCampanhaUseCase)
         {
             this.campanhaManager = campanhaManager;
+            this.criarCampanhaUseCase = criarCampanhaUseCase;
         }
 
         [HttpGet]

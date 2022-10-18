@@ -17,8 +17,9 @@ public class Contexto : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Campanha>()
-            .HasOne(v => v.Vacina)             // nav property in Campanha class
-            .WithMany(c => c.Campanhas);       // nav property in Vacina class
+            .HasOne(v => v.Vacina)
+            .WithMany(c => c.Campanhas)
+            .HasForeignKey(f => f.VacinaId);
     }
 
 }

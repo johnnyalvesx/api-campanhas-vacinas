@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VacinasCampanhas.VacinasCampanhas.API.Configurations;
+using VacinasCampanhas.VacinasCampanhas.Application.Models;
+using VacinasCampanhas.VacinasCampanhas.Application.UseCases;
 using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Implementations;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
@@ -26,10 +28,11 @@ builder.Services.AddDbContext<Contexto>(opcoes =>
     opcoes.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vacinascampanhasDB;");
 });
 
-builder.Services.AddCors();
+//builder.Services.AddCors();
 
 builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
 builder.Services.AddScoped<IVacinaManager, VacinaManager>();
+builder.Services.AddScoped<IUseCase<CriarCampanhaRequestDTO>, CriarCampanhaUseCase>();
 
 builder.Services.AddScoped<ICampanhaRepository, CampanhaRepository>();
 builder.Services.AddScoped<ICampanhaManager, CampanhaManager>();

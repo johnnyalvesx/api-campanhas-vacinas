@@ -12,14 +12,14 @@ using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 namespace VacinasCampanhas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20221017184953_vacinasDB")]
-    partial class vacinasDB
+    [Migration("20221018191019_vacinascampanhasDB")]
+    partial class vacinascampanhasDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
