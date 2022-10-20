@@ -20,6 +20,14 @@ public class Contexto : DbContext
             .HasOne(v => v.Vacina)
             .WithMany(c => c.Campanhas)
             .HasForeignKey(f => f.VacinaId);
+
+        modelBuilder.Entity<Vacina>()
+           .HasIndex(v => v.NomeDaVacina)
+           .IsUnique();
+
+        modelBuilder.Entity<Campanha>()
+            .HasIndex(c => c.NomeDaCampanha)
+            .IsUnique();
     }
 
 }
