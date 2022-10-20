@@ -19,7 +19,8 @@ public class Contexto : DbContext
         modelBuilder.Entity<Campanha>()
             .HasOne(v => v.Vacina)
             .WithMany(c => c.Campanhas)
-            .HasForeignKey(f => f.VacinaId);
+            .HasForeignKey(f => f.VacinaId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Vacina>()
            .HasIndex(v => v.NomeDaVacina)
