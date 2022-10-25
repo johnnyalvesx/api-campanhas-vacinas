@@ -1,4 +1,5 @@
-﻿using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
+﻿using VacinasCampanhas.Infrastructure.Abstractions;
+using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 
 namespace VacinasCampanhas.VacinasCampanhas.Domain.Implementations

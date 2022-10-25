@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VacinasCampanhas.Application.UseCases.Abstractions.Base;
+using VacinasCampanhas.Infrastructure.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Application.Models;
-using VacinasCampanhas.VacinasCampanhas.Application.UseCases;
-using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 
 namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
@@ -12,9 +12,9 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
     {
         private readonly ICampanhaManager campanhaManager;
 
-        private readonly IUseCase<CriarCampanhaRequestDTO> criarCampanhaUseCase;
+        private readonly IUseCaseRequestAsync<CriarCampanhaRequestDTO> criarCampanhaUseCase;
 
-        public CampanhasController(ICampanhaManager campanhaManager, IUseCase<CriarCampanhaRequestDTO> criarCampanhaUseCase)
+        public CampanhasController(ICampanhaManager campanhaManager, IUseCaseRequestAsync<CriarCampanhaRequestDTO> criarCampanhaUseCase)
         {
             this.campanhaManager = campanhaManager;
             this.criarCampanhaUseCase = criarCampanhaUseCase;

@@ -1,6 +1,6 @@
 ﻿using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 
-namespace VacinasCampanhas.VacinasCampanhas.Domain.Abstractions
+namespace VacinasCampanhas.Infrastructure.Abstractions
 {
     public interface IVacinaManager
     {

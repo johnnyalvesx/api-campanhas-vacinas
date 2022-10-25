@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
+using VacinasCampanhas.Infrastructure.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
 
