@@ -10,6 +10,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
     [Route("api/[controller]")]
     public class VacinasController : ControllerBase
     {
+ 
         private readonly IVacinaManager vacinaManager;
 
         public VacinasController(IVacinaManager vacinaManager)

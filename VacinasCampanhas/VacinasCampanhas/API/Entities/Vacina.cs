@@ -11,8 +11,9 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
 
         public string? DicaDaVacina { get; set; }
 
-        [JsonIgnore]
         public virtual Campanha Campanha { get; set; }
+
+        public int CampanhaId { get; set; }
 
     }
 } 

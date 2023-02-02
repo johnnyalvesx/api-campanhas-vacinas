@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VacinasCampanhas.Application.UseCases.Abstractions.Base;
 using VacinasCampanhas.Infrastructure.Abstractions;
-using VacinasCampanhas.VacinasCampanhas.Application.Models;
 using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
 
 namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
@@ -10,14 +8,12 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
     [Route("api/[controller]")]
     public class CampanhasController : ControllerBase
     {
+
         private readonly ICampanhaManager campanhaManager;
 
-        private readonly IUseCaseRequestAsync<CriarCampanhaRequestDTO> criarCampanhaUseCase;
-
-        public CampanhasController(ICampanhaManager campanhaManager, IUseCaseRequestAsync<CriarCampanhaRequestDTO> criarCampanhaUseCase)
+        public CampanhasController(ICampanhaManager campanhaManager)
         {
             this.campanhaManager = campanhaManager;
-            this.criarCampanhaUseCase = criarCampanhaUseCase;
         }
 
         [HttpGet]
@@ -27,7 +23,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> PegarCampanhaPeloIdAsync(int id)
+        public async Task<IActionResult> PegarCampanhaPorIdAsync(int id)
         {
             return Ok(await campanhaManager.PegarCampanhaPorIdAsync(id));
         }
@@ -35,7 +31,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CadastrarCampanhaAsync(Campanha campanha)
         {
-            var campanhaInserida = await campanhaManager.CadastrarCampanhaAsync(campanha);
+            var vacinaInserida = await campanhaManager.CadastrarCampanhaAsync(campanha);
             return CreatedAtAction(nameof(PegarCampanhasAsync), new { id = campanha.CampanhaId }, campanha);
         }
 
@@ -51,7 +47,7 @@ namespace VacinasCampanhas.VacinasCampanhas.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeletarCampanhaAsync(int id)
+        public async Task<IActionResult> DeletarCampanhaAsync(int id)
         {
             await campanhaManager.DeletarCampanhaAsync(id);
             return NoContent();

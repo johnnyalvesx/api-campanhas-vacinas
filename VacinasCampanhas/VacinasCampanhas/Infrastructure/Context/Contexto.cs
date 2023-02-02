@@ -16,19 +16,19 @@ public class Contexto : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Campanha>()
-            .HasOne(v => v.Vacina)
-            .WithOne(c => c.Campanha)
-            .HasForeignKey<Vacina>(v => v.VacinaId)
-            .OnDelete(DeleteBehavior.Cascade);
-
         modelBuilder.Entity<Vacina>()
-           .HasIndex(v => v.NomeDaVacina)
-           .IsUnique();
+            .HasOne(vacina => vacina.Campanha)
+            .WithMany(campanha => campanha.Vacinas)
+            .HasForeignKey(vacina => vacina.CampanhaId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<Campanha>()
-            .HasIndex(c => c.NomeDaCampanha)
-            .IsUnique();
+        //modelBuilder.Entity<Vacina>()
+        //   .HasIndex(v => v.NomeDaVacina)
+        //   .IsUnique();
+
+        //modelBuilder.Entity<Campanha>()
+        //    .HasIndex(c => c.NomeDaCampanha)
+        //    .IsUnique();
     }
 
 }

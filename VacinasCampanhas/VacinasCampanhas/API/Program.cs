@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using VacinasCampanhas.Application.UseCases.Abstractions.Base;
 using VacinasCampanhas.Infrastructure.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.API.Configurations;
-using VacinasCampanhas.VacinasCampanhas.Application.Models;
-using VacinasCampanhas.VacinasCampanhas.Application.UseCases;
 using VacinasCampanhas.VacinasCampanhas.Domain.Abstractions;
 using VacinasCampanhas.VacinasCampanhas.Domain.Implementations;
 using VacinasCampanhas.VacinasCampanhas.Infrastructure.DataProviders.Context;
@@ -34,7 +31,6 @@ builder.Services.AddDbContext<Contexto>(opcoes =>
 
 builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
 builder.Services.AddScoped<IVacinaManager, VacinaManager>();
-builder.Services.AddScoped<IUseCaseRequestAsync<CriarCampanhaRequestDTO>, CriarCampanhaUseCase>();
 
 builder.Services.AddScoped<ICampanhaRepository, CampanhaRepository>();
 builder.Services.AddScoped<ICampanhaManager, CampanhaManager>();
