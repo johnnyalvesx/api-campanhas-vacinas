@@ -27,7 +27,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<Contexto>(opcoes =>
 {
-    opcoes.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vacinascampanhasDB;");
+    opcoes.UseLazyLoadingProxies().UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vacinascampanhasDB;");
 });
 
 //builder.Services.AddCors();

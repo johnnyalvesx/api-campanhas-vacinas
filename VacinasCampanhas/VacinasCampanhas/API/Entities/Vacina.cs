@@ -1,4 +1,6 @@
-﻿namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
+﻿using Newtonsoft.Json;
+
+namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
 {
     public class Vacina
     {
@@ -9,7 +11,8 @@
 
         public string? DicaDaVacina { get; set; }
 
-        public ICollection<Campanha> Campanhas { get; set; }
+        [JsonIgnore]
+        public virtual Campanha Campanha { get; set; }
 
     }
 } 

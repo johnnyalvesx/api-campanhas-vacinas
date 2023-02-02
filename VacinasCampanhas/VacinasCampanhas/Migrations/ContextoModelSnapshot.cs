@@ -17,7 +17,7 @@ namespace VacinasCampanhas.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -52,18 +52,13 @@ namespace VacinasCampanhas.Migrations
                     b.HasIndex("NomeDaCampanha")
                         .IsUnique();
 
-                    b.HasIndex("VacinaId");
-
                     b.ToTable("Campanhas");
                 });
 
             modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", b =>
                 {
                     b.Property<int>("VacinaId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VacinaId"), 1L, 1);
 
                     b.Property<string>("DicaDaVacina")
                         .HasColumnType("nvarchar(max)");
@@ -80,20 +75,21 @@ namespace VacinasCampanhas.Migrations
                     b.ToTable("Vacinas");
                 });
 
-            modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Campanha", b =>
+            modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", b =>
                 {
-                    b.HasOne("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", "Vacina")
-                        .WithMany("Campanhas")
-                        .HasForeignKey("VacinaId")
+                    b.HasOne("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Campanha", "Campanhas")
+                        .WithOne("Vacina")
+                        .HasForeignKey("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", "VacinaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Vacina");
+                    b.Navigation("Campanhas");
                 });
 
-            modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Vacina", b =>
+            modelBuilder.Entity("VacinasCampanhas.VacinasCampanhas.Domain.Entities.Campanha", b =>
                 {
-                    b.Navigation("Campanhas");
+                    b.Navigation("Vacina")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using VacinasCampanhas.VacinasCampanhas.Domain.Entities;
-
-namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
+﻿namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
 {
     public class Campanha
     {
@@ -16,9 +13,10 @@ namespace VacinasCampanhas.VacinasCampanhas.Domain.Entities
 
         public string StatusDaCampanha { get; set; }
 
+        public virtual Vacina Vacina { get; set; }
+
         public int VacinaId { get; set; }
 
-        public Vacina Vacina { get; set; }
 
     }
 }

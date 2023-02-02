@@ -18,8 +18,8 @@ public class Contexto : DbContext
     {
         modelBuilder.Entity<Campanha>()
             .HasOne(v => v.Vacina)
-            .WithMany(c => c.Campanhas)
-            .HasForeignKey(f => f.VacinaId)
+            .WithOne(c => c.Campanha)
+            .HasForeignKey<Vacina>(v => v.VacinaId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Vacina>()
